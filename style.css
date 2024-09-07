@@ -68,6 +68,12 @@ nav a:hover {
 .search-bar {
     display: none; /* Hide initially */
     align-items: center;
+    position: absolute;
+    right: 3rem;
+    top: 1rem;
+    background-color: var(--secondary-bg);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .search-bar input {
@@ -75,6 +81,7 @@ nav a:hover {
     border-radius: 5px;
     border: none;
     outline: none;
+    width: 200px;
 }
 
 .theme-toggle {

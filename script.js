@@ -54,12 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle search bar visibility
     searchIcon.addEventListener('click', () => {
-        if (searchBar.style.display === 'flex') {
-            searchBar.style.display = 'none';
-        } else {
-            searchBar.style.display = 'flex';
-            searchInput.focus(); // Focus on input when shown
-        }
+        searchBar.style.display = searchBar.style.display === 'flex' ? 'none' : 'flex';
+        searchInput.focus(); // Focus on input when shown
     });
 
     // Make loadProject function available globally
