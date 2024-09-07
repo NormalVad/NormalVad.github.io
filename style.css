@@ -21,6 +21,7 @@ body {
 
 header {
     background-color: var(--secondary-bg);
+    height: 70px; /* Set a specific height for the header */
     padding: 1rem;
     position: fixed;
     top: 0;
@@ -57,7 +58,7 @@ nav a:hover {
 }
 
 main {
-    padding-top: 8rem; /* Ensure enough space from the header */
+    padding-top: 90px; /* Ensure enough space from the header */
     padding-left: 2rem;
     padding-right: 2rem;
     max-width: 800px;
