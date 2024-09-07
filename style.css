@@ -87,6 +87,7 @@ nav a:hover {
 }
 
 .search-bar input {
+    position: relative;
     padding: 0.5rem;
     border-radius: 5px;
     border: none;
@@ -94,6 +95,45 @@ nav a:hover {
     width: 200px;
     background-color: var(--secondary-bg);
     color: var(--primary-text);
+}
+
+#search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--secondary-bg);
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.search-suggestion {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--primary-bg);
+}
+
+.search-suggestion:last-child {
+    border-bottom: none;
+}
+
+.search-suggestion:hover {
+    background-color: var(--primary-bg);
+}
+
+.search-suggestion h3 {
+    margin: 0;
+    font-size: 1em;
+    color: var(--accent-color);
+}
+
+.search-suggestion p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    color: var(--secondary-text);
 }
 
 .theme-toggle {
