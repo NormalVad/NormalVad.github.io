@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
     const searchIcon = document.getElementById('search-icon');
     const searchBar = document.getElementById('search-bar');
+    const root = document.documentElement;
 
     function updateSidebar() {
         const headings = content.querySelectorAll('h2');
@@ -44,9 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme toggle functionality
     themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        themeToggle.classList.toggle('fa-sun');
-        themeToggle.classList.toggle('fa-moon');
+        if (root.style.getPropertyValue('--primary-bg') === '#121212') {
+            root.style.setProperty('--primary-bg', '#FFFFFF');
+            root.style.setProperty('--secondary-bg', '#F0F0F0');
+            root.style.setProperty('--primary-text', '#121212');
+            themeToggle.classList.toggle('fa-sun');
+            themeToggle.classList.toggle('fa-moon');
+        } else {
+            root.style.setProperty('--primary-bg', '#121212');
+            root.style.setProperty('--secondary-bg', '#1F1F1F');
+            root.style.setProperty('--primary-text', '#F0F0F0');
+            themeToggle.classList.toggle('fa-sun');
+            themeToggle.classList.toggle('fa-moon');
+        }
     });
 
     // Search functionality
