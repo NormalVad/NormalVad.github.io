@@ -1,0 +1,22 @@
+[
+    {
+      "title": "Home",
+      "url": "/index.html",
+      "content": "Ayush Goyal Graduate Research Assistant University of Southern California. I am actively seeking Summer Internship opportunities."
+    },
+    {
+      "title": "Experience",
+      "url": "/experience.html",
+      "content": "SAIL, KAIST Research Assistant Aug 2023 - Jun 2024 · Daejeon, South Korea (Remote). Enhanced efficacy by leveraging dependency parser-based syntactic units, resulting in 7% increase in metric scores. Evaluated LIME, SHAP, IG, LRP and Attention on text classification models for Plug and Play XAI project. Developed a pipeline to provide the best explainer algorithm for particular text-based models to build trustworthiness. Adobe Research Intern Jun 2022 - Aug 2022 · Bengaluru, India (Remote). Implemented Quantization-Aware Training algorithm for GANs to optimize model size and performance in PyTorch. Analyzed layer-wise sensitivity of StyleGAN2 by estimating average Hessian matrix trace via Hutchinson algorithm. Achieved a high compression ratio of 6.5 times with negligible degradation in FID score compared to original model."
+    },
+    {
+      "title": "Projects",
+      "url": "/projects.html",
+      "content": "Intent based CounterSpeech A brief description of Project 1. Claim Span Identification (CSI) A brief description of Project 2."
+    },
+    {
+      "title": "Education",
+      "url": "/education.html",
+      "content": "University of Southern California (USC) MS in Computer Science | Jun 2024 - Dec 2025. GPA: 4.0/4.0. Relevant Coursework: CSCI 570 - Analysis and Design of Algorithms, CSCI 662 - Advanced Natural Language Processing (Ongoing), CSCI 545 - Introduction to Robotics (Ongoing). Indian Institute of Technology Delhi (IITD) BTech in Mathematics and Computing | Jul 2019 - Aug 2023. GPA: 9.078/10.0. Relevant Coursework: Algorithms, Data Structures, Machine Learning."
+    }
+  ]
