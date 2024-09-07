@@ -179,16 +179,17 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    color: var(--accent-color);
 }
 
 .footer-nav a {
-    color: var(--primary-text);
+    color: var(--accent-color);
     text-decoration: none;
     font-size: 1em;
 }
 
 .footer-nav a:hover {
-    color: var(--accent-color);
+    color: var(--primary-text);
 }
 
 .social-icons {
@@ -199,13 +200,20 @@ footer {
 }
 
 .social-icons a {
-    color: var(--primary-text);
+    color: var(--accent-color);
     font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: var(--accent-color);
+    color: var(--primary-text);
+}
+
+footer {
+    background-color: var(--secondary-bg);
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
 }
 
 .fade-heading {
