@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience - Personal Website</title>
+    <title>Experience - Ayush Goyal</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -19,29 +20,44 @@
     </header>
 
     <main id="content">
-        <h1>Work Experience</h1>
-        <h2 id="job1">Statistical Artificial Intelligence Lab, KAIST</h2>
-        <p> Research Assistant| Start Date - End Date</p>
-        <ul>
-            <li>Responsibility 1</li>
-            <li>Responsibility 2</li>
-            <li>Achievement 1</li>
-        </ul>
-        <h2 id="job2">Job Title 2</h2>
-        <p>Company Name | Start Date - End Date</p>
-        <ul>
-            <li>Responsibility 1</li>
-            <li>Responsibility 2</li>
-            <li>Achievement 1</li>
-        </ul>
+        <h1>Experience</h1>
+        <p class="intro">My journey in academia and the tech industry so far.</p>
+        <div class="experience-item" id="kaist">
+            <h2>Statistical Artificial Intelligence Lab, KAIST</h2>
+            <h3>Research Assistant</h3>
+            <p>Aug 2023 - Jun 2024 · Daejeon, South Korea (Remote)</p>
+            <p>I was supervised by Prof. Jaesik Choi and Research Prof. Nari Kim.</p>
+            <h4>Tasks</h4>
+            <ul>
+                <li>Enhanced efficacy by leveraging dependency parser-based syntactic units, resulting in 7% increase in metric scores.</li>
+                <li>Evaluated LIME, SHAP, IG, LRP and Attention on text classification models for Plug and Play XAI project.</li>
+                <li>Developed a pipeline to provide the best explainer algorithm for particular text-based models to build trustworthiness.</li>
+            </ul>
+        </div>
+        <!-- Add more experience items as needed -->
     </main>
 
     <aside id="sidebar">
-        <!-- On this page section will be dynamically loaded here -->
+        <h3>On this page</h3>
+        <ul>
+            <li><a href="#kaist">SAIL, KAIST</a></li>
+            <!-- Add more links as needed -->
+        </ul>
     </aside>
 
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <div class="footer-nav">
+            <a href="education.html">&larr; Education</a>
+            <a href="projects.html">Projects &rarr;</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>&copy; 2024 Ayush Goyal. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
