@@ -29,7 +29,14 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-between;
+    align-items: 
+    center;
+}
+
+.header-icons {
+    display: flex;
     align-items: center;
+    gap: 1rem;
 }
 
 nav ul {
@@ -60,9 +67,8 @@ nav a:hover {
 }
 
 .search-bar {
-    display: flex;
+    display: none; /* Hide initially */
     align-items: center;
-    gap: 0.5rem;
 }
 
 .search-bar input {
