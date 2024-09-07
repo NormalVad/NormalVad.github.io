@@ -30,6 +30,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box; /* Ensure padding is included in total width */
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto; /* Ensure it stays within bounds */
 }
 
 nav ul {
@@ -38,6 +46,7 @@ nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    flex-grow: 1; /* Allow nav to take up available space */
 }
 
 nav ul li {
@@ -88,6 +97,7 @@ nav a:hover {
     cursor: pointer;
     font-size: 1.2rem;
     color: var(--accent-color);
+    margin-left: 1rem; /* Add margin to separate from other icons */
 }
 
 main {
