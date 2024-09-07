@@ -398,3 +398,43 @@ footer {
         display: none;
     }
 }
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-links a:hover {
+    background-color: var(--heading-color);
+    transform: translateY(-2px);
+}
+
+.project-links i {
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .project-links {
+        flex-direction: column;
+    }
+
+    .project-links a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
