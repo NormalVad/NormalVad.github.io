@@ -29,15 +29,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function searchContent() {
         const filter = searchInput.value.toLowerCase();
-        const response = await fetch('/search-index.json');
-        const searchIndex = await response.json();
-        
-        const results = searchIndex.filter(item => 
-            item.content.toLowerCase().includes(filter) ||
-            item.title.toLowerCase().includes(filter)
-        );
+        if (filter.length < 2) return; // Don't search for very short queries
+
+        const pages = ['index.html', 'experience.html', 'projects.html', 'education.html'];
+        const results = [];
+
+        for (const page of pages) {
+            const response = await fetch(page);
+            const html = await response.text();
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const pageContent = doc.body.textContent || "";
+
+            if (pageContent.toLowerCase().includes(filter)) {
+                const title = doc.querySelector('title').textContent;
+                const snippet = getSnippet(pageContent, filter);
+                results.push({ title, url: page, snippet });
+            }
+        }
 
         displaySearchResults(results);
+    }
+
+    function getSnippet(content, query) {
+        const index = content.toLowerCase().indexOf(query);
+        const start = Math.max(0, index - 50);
+        const end = Math.min(content.length, index + query.length + 50);
+        return content.slice(start, end).trim();
     }
 
     function displaySearchResults(results) {
@@ -51,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultItem = document.createElement('div');
                 resultItem.innerHTML = `
                     <h3><a href="${result.url}">${result.title}</a></h3>
-                    <p>${result.content.substring(0, 150)}...</p>
+                    <p>${result.snippet}</p>
                 `;
                 resultsContainer.appendChild(resultItem);
             });
