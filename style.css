@@ -74,6 +74,11 @@ main {
     padding: 2rem 1rem;
 }
 
+.left-content {
+    text-align: left;
+    align-items: flex-start;
+}
+
 .profile-pic {
     width: 150px;
     height: 150px;
@@ -207,13 +212,6 @@ footer {
 
 .social-icons a:hover {
     color: var(--primary-text);
-}
-
-footer {
-    background-color: var(--secondary-bg);
-    text-align: center;
-    padding: 1rem;
-    margin-top: auto;
 }
 
 .fade-heading {
