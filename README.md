@@ -1,2 +1,3 @@
-# NormalVad.github.io
-Personal Website
+# Welcome to My Website
+
+This is the home of my personal website hosted on GitHub Pages.
