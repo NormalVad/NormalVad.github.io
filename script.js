@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function searchContent() {
         const filter = searchInput.value.toLowerCase();
-        const items = content.querySelectorAll('h1, h2, h3, p, li');
+        const items = document.querySelectorAll('h1, h2, h3, p, li');
         items.forEach(item => {
             if (item.textContent.toLowerCase().includes(filter)) {
                 item.style.display = '';
