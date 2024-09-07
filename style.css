@@ -20,7 +20,7 @@ body {
 }
 
 body.has-fixed-header {
-    padding-top: 60px; /* Adjust this value to match your header height */
+    padding-top: 60px;
 }
 
 body.light-theme {
@@ -78,22 +78,19 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-left: auto;
 }
 
 .search-bar {
-    display: none;
+    display: flex;
     align-items: center;
     background-color: var(--secondary-bg);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    margin-right: 1rem;
-    position: relative;
 }
 
 .search-bar input {
     padding: 0.5rem;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
     border: none;
     outline: none;
     width: 200px;
@@ -101,57 +98,31 @@ nav a:hover {
     color: var(--primary-text);
 }
 
-#search-suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--secondary-bg);
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 1000;
-}
-
-.search-suggestion {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid var(--primary-bg);
-}
-
-.search-suggestion:last-child {
-    border-bottom: none;
-}
-
-.search-suggestion:hover {
-    background-color: var(--primary-bg);
-}
-
-.search-suggestion h3 {
-    margin: 0;
-    font-size: 1em;
+#search-icon, #theme-toggle {
+    background: none;
+    border: none;
     color: var(--accent-color);
-}
-
-.search-suggestion p {
-    margin: 5px 0 0;
-    font-size: 0.9em;
-    color: var(--secondary-text);
-}
-
-.theme-toggle {
     cursor: pointer;
     font-size: 1.2rem;
-    color: var(--accent-color);
+    padding: 0.5rem;
+}
+
+#search-icon {
+    border-radius: 0 5px 5px 0;
+}
+
+#theme-toggle {
     transition: transform 0.3s ease;
 }
 
+#theme-toggle:hover {
+    transform: rotate(30deg);
+}
+
 main {
-    padding-top: 80px;
     padding: 2rem;
     max-width: 800px;
-    margin: 80px auto 2rem;
+    margin: 0 auto;
     flex-grow: 1;
 }
 
@@ -379,70 +350,51 @@ footer {
 
 @media (max-width: 768px) {
     body.has-fixed-header {
-        padding-top: 80px; /* Slightly larger on mobile to account for potential multi-line header */
+        padding-top: 120px;
     }
 
     header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-    }
-
-    main {
-        padding-top: 80px; /* Adjust this value based on your header height */
-        padding: 1rem;
-        margin-top: 0;
-    }
-
-    .center-content, .left-content {
-        padding-top: 2rem;
+        flex-direction: column;
+        padding: 0.5rem;
     }
 
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     nav ul li {
-        margin: 0.5rem 0;
-    }
-
-    aside {
-        display: none;
-    }
-
-    .footer-nav {
-        flex-direction: column;
-        gap: 0.5rem;
+        margin: 0.25rem;
     }
 
     .header-icons {
-        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
     }
 
     .search-bar {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
         width: 100%;
-        padding: 0.5rem;
-        box-sizing: border-box;
     }
 
     .search-bar input {
-        width: 100%;
+        width: calc(100% - 40px);
     }
 
-    h1, h2, h3, h4 {
-        scroll-margin-top: 80px; /* This ensures that when linking to a heading, it's not hidden under the header */
+    main {
+        padding: 1rem;
     }
 
     .description {
         text-align: left;
         padding: 0 1rem;
     }
-}
 
+    h1, h2, h3, h4 {
+        scroll-margin-top: 120px;
+    }
+
+    aside {
+        display: none;
+    }
+}

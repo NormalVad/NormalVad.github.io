@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleTheme() {
         document.body.classList.toggle('light-theme');
         const isDark = !document.body.classList.contains('light-theme');
-        themeToggle.classList.toggle('fa-sun', !isDark);
-        themeToggle.classList.toggle('fa-moon', isDark);
+        themeToggle.querySelector('i').classList.toggle('fa-sun', !isDark);
+        themeToggle.querySelector('i').classList.toggle('fa-moon', isDark);
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
 
@@ -90,12 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('theme') || 'dark';
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
-            themeToggle.classList.add('fa-sun');
-            themeToggle.classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
+            themeToggle.querySelector('i').classList.remove('fa-moon');
         } else {
             document.body.classList.remove('light-theme');
-            themeToggle.classList.remove('fa-sun');
-            themeToggle.classList.add('fa-moon');
+            themeToggle.querySelector('i').classList.remove('fa-sun');
+            themeToggle.querySelector('i').classList.add('fa-moon');
         }
     }
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle search bar visibility
     searchIcon.addEventListener('click', () => {
-        searchBar.style.display = searchBar.style.display === 'flex' ? 'none' : 'flex';
+        searchBar.classList.toggle('active');
         searchInput.focus();
     });
 
