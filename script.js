@@ -38,7 +38,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(page);
             const html = await response.text();
             const doc = new DOMParser().parseFromString(html, 'text/html');
-            const pageContent = doc.body.textContent || "";
+            
+            // Extract relevant content based on page structure
+            let pageContent;
+            if (page === 'index.html') {
+                // For home page, focus on specific sections
+                const sections = doc.querySelectorAll('.center-content, .description');
+                pageContent = Array.from(sections).map(section => section.textContent).join(' ');
+            } else {
+                // For other pages, use the main content area
+                const mainContent = doc.querySelector('#content');
+                pageContent = mainContent ? mainContent.textContent : "";
+            }
 
             if (pageContent.toLowerCase().includes(filter)) {
                 const title = doc.querySelector('title').textContent;
