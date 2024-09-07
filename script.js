@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const themeToggle = document.querySelector('.theme-toggle');
     const searchInput = document.getElementById('search-input');
+    const searchIcon = document.getElementById('search-icon');
+    const searchBar = document.getElementById('search-bar');
 
     function updateSidebar() {
         const headings = content.querySelectorAll('h2');
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function searchContent() {
         const filter = searchInput.value.toLowerCase();
-        const items = content.querySelectorAll('h2, h3, p, li');
+        const items = content.querySelectorAll('h1, h2, h3, p, li');
         items.forEach(item => {
             if (item.textContent.toLowerCase().includes(filter)) {
                 item.style.display = '';
@@ -47,6 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Search functionality
     searchInput.addEventListener('input', searchContent);
+
+    // Toggle search bar visibility
+    searchIcon.addEventListener('click', () => {
+        searchBar.style.display = searchBar.style.display === 'flex' ? 'none' : 'flex';
+    });
 
     // Make loadProject function available globally
     window.loadProject = loadProject;
