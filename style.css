@@ -325,6 +325,27 @@ footer {
     color: var(--primary-text);
 }
 
+.cv-link {
+    font-weight: bold;
+    font-size: 0.8em;
+    padding: 2px 5px;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.cv-link:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+.social-links .cv-link {
+    font-size: 1em;
+    vertical-align: middle;
+}
+
 .social-icons {
     display: flex;
     justify-content: center;
