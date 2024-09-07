@@ -21,7 +21,7 @@ body {
 
 header {
     background-color: var(--secondary-bg);
-    height: 70px; /* Set a specific height for the header */
+    height: 35px; /* Set a specific height for the header */
     padding: 1rem;
     position: fixed;
     top: 0;
