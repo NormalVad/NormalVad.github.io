@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
     const searchIcon = document.getElementById('search-icon');
     const searchBar = document.getElementById('search-bar');
-    const root = document.documentElement;
 
     function updateSidebar() {
         const headings = content.querySelectorAll('h2');
@@ -45,14 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const resultsContainer = document.createElement('div');
         resultsContainer.className = 'search-results';
         
-        results.forEach(result => {
-            const resultItem = document.createElement('div');
-            resultItem.innerHTML = `
-                <h3><a href="${result.url}">${result.title}</a></h3>
-                <p>${result.content.substring(0, 150)}...</p>
-            `;
-            resultsContainer.appendChild(resultItem);
-        });
+        if (results.length === 0) {
+            resultsContainer.innerHTML = '<p>No results found.</p>';
+        } else {
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.innerHTML = `
+                    <h3><a href="${result.url}">${result.title}</a></h3>
+                    <p>${result.content.substring(0, 150)}...</p>
+                `;
+                resultsContainer.appendChild(resultItem);
+            });
+        }
 
         content.innerHTML = '';
         content.appendChild(resultsContainer);
@@ -60,23 +63,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function toggleTheme() {
         document.body.classList.toggle('light-theme');
-        const isDark = document.body.classList.contains('light-theme');
-        themeToggle.classList.toggle('fa-sun', isDark);
-        themeToggle.classList.toggle('fa-moon', !isDark);
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        const isDark = !document.body.classList.contains('light-theme');
+        themeToggle.classList.toggle('fa-sun', !isDark);
+        themeToggle.classList.toggle('fa-moon', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    function applyTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeToggle.classList.add('fa-sun');
+            themeToggle.classList.remove('fa-moon');
+        } else {
+            document.body.classList.remove('light-theme');
+            themeToggle.classList.remove('fa-sun');
+            themeToggle.classList.add('fa-moon');
+        }
     }
 
     // Update sidebar on page load
     updateSidebar();
 
+    // Apply saved theme on page load
+    applyTheme();
+
     // Theme toggle functionality
     themeToggle.addEventListener('click', toggleTheme);
-
-    // Set initial theme
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    if (savedTheme === 'light') {
-        toggleTheme();
-    }
 
     // Search functionality
     searchInput.addEventListener('input', debounce(searchContent, 300));
