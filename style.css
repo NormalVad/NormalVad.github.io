@@ -4,6 +4,7 @@
     --primary-text: #FFFFFF;
     --secondary-text: #E0E0E0;
     --accent-color: #4A90E2;
+    --heading-color: #64B5F6; /* New light blue color for headings */
   }
   
   body {
@@ -17,6 +18,7 @@
     color: var(--primary-text);
     line-height: 1.6;
   }
+  
   
   header {
     background-color: var(--secondary-bg);
@@ -74,7 +76,7 @@
   }
   
   h1, h2, h3 {
-    color: var(--accent-color);
+    color: var(--heading-color);
     margin-bottom: 1rem;
   }
   
@@ -86,7 +88,7 @@
   
   h2 {
     font-size: 1.8em;
-    border-bottom: 2px solid var(--accent-color);
+    border-bottom: 2px solid var(--heading-color);
     padding-bottom: 0.5rem;
   }
   
