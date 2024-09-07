@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const content = document.getElementById('content');
     const sidebar = document.getElementById('sidebar');
     const themeToggle = document.getElementById('theme-toggle');
+    const searchInput = document.getElementById('search-input');
     const searchIcon = document.getElementById('search-icon');
     const searchBar = document.getElementById('search-bar');
-    const searchInput = document.getElementById('search-input');
     const searchSuggestions = document.createElement('div');
     searchSuggestions.id = 'search-suggestions';
     searchBar.appendChild(searchSuggestions);
@@ -114,21 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', debounce(searchContent, 300));
 
     // Toggle search bar visibility
-    searchIcon.addEventListener('click', function(e) {
-        e.stopPropagation();
-        searchBar.style.display = searchBar.style.display === 'block' ? 'none' : 'block';
-        if (searchBar.style.display === 'block') {
-            searchInput.focus();
-        }
+    searchIcon.addEventListener('click', () => {
+        searchBar.style.display = searchBar.style.display === 'flex' ? 'none' : 'flex';
+        searchInput.focus();
     });
 
     // Close search suggestions when clicking outside
-    document.addEventListener('click', function(e) {
-        if (e.target !== searchBar && e.target !== searchIcon && !searchBar.contains(e.target)) {
-            searchBar.style.display = 'none';
+    document.addEventListener('click', (event) => {
+        if (!searchBar.contains(event.target)) {
+            searchSuggestions.innerHTML = '';
         }
     });
-});
 
     // Debounce function to limit how often a function is called
     function debounce(func, wait) {
