@@ -19,6 +19,10 @@ body {
     line-height: 1.6;
 }
 
+body.has-fixed-header {
+    padding-top: 60px; /* Adjust this value to match your header height */
+}
+
 body.light-theme {
     --primary-bg: #FFFFFF;
     --secondary-bg: #F0F0F0;
@@ -261,11 +265,19 @@ ul {
 }
 
 .description {
-    margin-top: 1rem;
+    margin-top: 2rem;
     line-height: 1.6;
-    max-width: 600px;
+    max-width: 800px;
     text-align: justify;
     color: var(--secondary-text);
+}
+
+.description p {
+    margin-bottom: 1rem;
+}
+
+.description strong {
+    color: var(--primary-text);
 }
 
 aside {
@@ -366,9 +378,26 @@ footer {
 }
 
 @media (max-width: 768px) {
+    body.has-fixed-header {
+        padding-top: 80px; /* Slightly larger on mobile to account for potential multi-line header */
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
     main {
-        margin-top: 80px;
+        padding-top: 80px; /* Adjust this value based on your header height */
         padding: 1rem;
+        margin-top: 0;
+    }
+
+    .center-content, .left-content {
+        padding-top: 2rem;
     }
 
     nav ul {
@@ -405,5 +434,14 @@ footer {
 
     .search-bar input {
         width: 100%;
+    }
+
+    h1, h2, h3, h4 {
+        scroll-margin-top: 80px; /* This ensures that when linking to a heading, it's not hidden under the header */
+    }
+
+    .description {
+        text-align: left;
+        padding: 0 1rem;
     }
 }
