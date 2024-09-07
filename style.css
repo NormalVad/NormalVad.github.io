@@ -58,7 +58,7 @@ nav a:hover {
 }
 
 main {
-    margin-top: 90px; /* Matches the header height */
+    margin-top: 100px; /* Adjusted to ensure the heading is not hidden */
     padding: 2rem;
     max-width: 800px;
     margin-left: auto;
@@ -278,7 +278,7 @@ footer {
 
 @media (max-width: 768px) {
     main {
-        margin-top: 90px; /* Matches the header height */
+        margin-top: 100px; /* Matches the header height */
         padding: 2rem 1rem 2rem;
     }
 
@@ -290,7 +290,7 @@ footer {
     nav ul li {
         margin: 0.5rem 0;
     }
-    
+
     html {
         scroll-padding-top: 90px; /* Matches the new margin-top */
     }
