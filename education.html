@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="has-fixed-header">
+<body>
     <header>
         <nav>
             <ul>
@@ -21,39 +21,41 @@
             <div class="search-bar" id="search-bar">
                 <input type="text" id="search-input" placeholder="Search...">
             </div>
-            <i class="fas fa-search" id="search-icon"></i>
-            <i class="fas fa-moon theme-toggle" id="theme-toggle"></i>
+            <button id="search-icon" aria-label="Search"><i class="fas fa-search"></i></button>
+            <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
         </div>
     </header>
 
-    <main id="content" class="left-content">
-        <h1>Education</h1>
-        <p class="intro">A concise collection of my relevant academic courses throughout my undergraduate and masters.</p>
-        <div class="education-item" id="degree1">
-            <h2>University of Southern California (USC)</h2>
-            <p>MS in Computer Science | Jun 2024 - Dec 2025</p>
-            <ul>
-                <li>GPA: 4.0/4.0</li>
-                <li>Relevant Coursework:</li>
-                <ol>
-                    <li>CSCI 570 - Analysis and Design of Algorithms</li>
-                    <li>CSCI 662 - Advanced Natural Language Processing (Ongoing)</li>
-                    <li>CSCI 545 - Introduction to Robotics (Ongoing)</li>
-                </ol>
-            </ul>
-        </div>
-        <div class="education-item" id="degree2">
-            <h2>Indian Institute of Technology Delhi (IITD)</h2>
-            <p>BTech in Mathematics and Computing | Jul 2019 - Aug 2023</p>
-            <ul>
-                <li>GPA: 9.078/10.0</li>
-                <li>Relevant Coursework:</li>
-                <ol>
-                    <li>Algorithms</li>
-                    <li>Data Structures</li>
-                    <li>Machine Learning</li>
-                </ol>
-            </ul>
+    <main>
+        <div class="content-wrapper">
+            <h1>Education</h1>
+            <p class="intro">A concise collection of my relevant academic courses throughout my undergraduate and masters.</p>
+            <div class="education-item" id="degree1">
+                <h2>University of Southern California (USC)</h2>
+                <p>MS in Computer Science | Jun 2024 - Dec 2025</p>
+                <ul>
+                    <li>GPA: 4.0/4.0</li>
+                    <li>Relevant Coursework:</li>
+                    <ol>
+                        <li>CSCI 570 - Analysis and Design of Algorithms</li>
+                        <li>CSCI 662 - Advanced Natural Language Processing (Ongoing)</li>
+                        <li>CSCI 545 - Introduction to Robotics (Ongoing)</li>
+                    </ol>
+                </ul>
+            </div>
+            <div class="education-item" id="degree2">
+                <h2>Indian Institute of Technology Delhi (IITD)</h2>
+                <p>BTech in Mathematics and Computing | Jul 2019 - Aug 2023</p>
+                <ul>
+                    <li>GPA: 9.078/10.0</li>
+                    <li>Relevant Coursework:</li>
+                    <ol>
+                        <li>Algorithms</li>
+                        <li>Data Structures</li>
+                        <li>Machine Learning</li>
+                    </ol>
+                </ul>
+            </div>
         </div>
     </main>
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="has-fixed-header">
+<body>
     <header>
         <nav>
             <ul>
@@ -21,34 +21,36 @@
             <div class="search-bar" id="search-bar">
                 <input type="text" id="search-input" placeholder="Search...">
             </div>
-            <i class="fas fa-search" id="search-icon"></i>
-            <i class="fas fa-moon theme-toggle" id="theme-toggle"></i>
+            <button id="search-icon" aria-label="Search"><i class="fas fa-search"></i></button>
+            <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
         </div>
     </header>
 
-    <main id="content">
-        <section id="home" class="center-content">
-            <img src="ayush.JPG" alt="Ayush Goyal" class="profile-pic">
-            <h1>Ayush Goyal</h1>
-            <p class="position">Graduate Research Assistant</p>
-            <p class="university">University of Southern California</p>
-            <div class="social-links">
-                <a href="mailto:ayushgoyal5720@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/ayushgoyal0507/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://x.com/anakinwader57" target="_blank" title="X (Twitter)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/NormalVad" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="Ayush_Goyal_resume.pdf" target="_blank" title="CV" class="cv-link">CV</a>
-            </div>
-            <div class="description">
-                <p><strong>Hi, I'm Ayush Goyal, a Computer Science graduate student at the University of Southern California, actively seeking 2025 summer internship opportunities. I hold a bachelor's in Mathematics and Computing from IIT Delhi. My expertise spans NLP, Computer Vision, XAI techniques, and multimodal AI.</strong></p>
-                <p><strong>As a Research Assistant at KAIST, I improved XAI metrics by 7% for text classification models. At Adobe Research, I worked on compressing StyleGAN2, achieving a 6.5x compression with minimal FID degradation. I've also developed multimodal AI systems for combating online hate speech during my thesis at IIT Delhi.</strong></p>
-                <p><strong>I am passionate about leveraging AI for impactful real-world applications and am excited to contribute to innovative projects in industry.</strong></p>
-            </div>
-        </section>
+    <main>
+        <div class="content-wrapper">
+            <section id="home" class="center-content">
+                <img src="ayush.JPG" alt="Ayush Goyal" class="profile-pic">
+                <h1>Ayush Goyal</h1>
+                <p class="position">Graduate Research Assistant</p>
+                <p class="university">University of Southern California</p>
+                <div class="social-links">
+                    <a href="mailto:ayushgoyal5720@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/ayushgoyal0507/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/anakinwader57" target="_blank" title="X (Twitter)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/NormalVad" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="Ayush_Goyal_resume.pdf" target="_blank" title="CV" class="cv-link">CV</a>
+                </div>
+                <div class="description">
+                    <p><strong>Hi, I'm Ayush Goyal, a Computer Science graduate student at the University of Southern California, actively seeking 2025 summer internship opportunities. I hold a bachelor's in Mathematics and Computing from IIT Delhi. My expertise spans NLP, Computer Vision, XAI techniques, and multimodal AI.</strong></p>
+                    <p><strong>As a Research Assistant at KAIST, I improved XAI metrics by 7% for text classification models. At Adobe Research, I worked on compressing StyleGAN2, achieving a 6.5x compression with minimal FID degradation, leading to a pending US patent. I've also developed multimodal AI systems for combating online hate speech during my thesis at IIT Delhi.</strong></p>
+                    <p><strong>I am passionate about leveraging AI for impactful real-world applications and am excited to contribute to innovative projects in industry.</strong></p>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>

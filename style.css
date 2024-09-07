@@ -17,10 +17,7 @@ body {
     background-color: var(--primary-bg);
     color: var(--primary-text);
     line-height: 1.6;
-}
-
-body.has-fixed-header {
-    padding-top: 60px; /* Adjust this value to match your header height */
+    padding-top: 60px;
 }
 
 body.light-theme {
@@ -37,6 +34,8 @@ header {
     padding: 0.5rem 1rem;
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -148,11 +147,16 @@ nav a:hover {
 }
 
 main {
-    padding-top: 80px;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 80px auto 2rem;
     flex-grow: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    padding-top: 1rem;
 }
 
 .center-content {
@@ -160,17 +164,10 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
 }
 
 .left-content {
     text-align: left;
-    align-items: flex-start;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
 }
 
 .education-item, .experience-item, .project-card {
@@ -377,36 +374,58 @@ footer {
     vertical-align: middle;
 }
 
+button, .cv-link, .social-links a, nav a {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
-    body.has-fixed-header {
-        padding-top: 80px; /* Slightly larger on mobile to account for potential multi-line header */
+    body {
+        padding-top: 120px;
     }
 
     header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-    }
-
-    main {
-        padding-top: 80px; /* Adjust this value based on your header height */
-        padding: 1rem;
-        margin-top: 0;
-    }
-
-    .center-content, .left-content {
-        padding-top: 2rem;
+        height: auto;
+        flex-wrap: wrap;
     }
 
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     nav ul li {
-        margin: 0.5rem 0;
+        margin: 0.25rem 0.5rem;
+    }
+
+    .header-icons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+    main {
+        padding-top: 1rem;
+    }
+
+    .content-wrapper {
+        padding-top: 2rem;
+    }
+
+    h1, h2, h3, h4 {
+        scroll-margin-top: 130px;
+    }
+
+    .center-content, .left-content {
+        padding-top: 1rem;
+    }
+
+    .experience-item, .project-card, .education-item {
+        margin-top: 1rem;
     }
 
     aside {
@@ -416,10 +435,6 @@ footer {
     .footer-nav {
         flex-direction: column;
         gap: 0.5rem;
-    }
-
-    .header-icons {
-        margin-left: 0;
     }
 
     .search-bar {
@@ -436,12 +451,8 @@ footer {
         width: 100%;
     }
 
-    h1, h2, h3, h4 {
-        scroll-margin-top: 80px; /* This ensures that when linking to a heading, it's not hidden under the header */
-    }
-
     .description {
         text-align: left;
-        padding: 0 1rem;
+        padding: 0;
     }
 }

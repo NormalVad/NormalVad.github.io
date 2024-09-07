@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="has-fixed-header">
+<body>
     <header>
         <nav>
             <ul>
@@ -21,20 +21,22 @@
             <div class="search-bar" id="search-bar">
                 <input type="text" id="search-input" placeholder="Search...">
             </div>
-            <i class="fas fa-search" id="search-icon"></i>
-            <i class="fas fa-moon theme-toggle" id="theme-toggle"></i>
+            <button id="search-icon" aria-label="Search"><i class="fas fa-search"></i></button>
+            <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
         </div>
     </header>
 
-    <main id="content" class="left-content">
-        <h1>Projects</h1>
-        <div class="project-card" id="project1">
-            <h2>Intent based CounterSpeech</h2>
-            <p>A brief description of Project 1...</p>
-        </div>
-        <div class="project-card" id="project2">
-            <h2>Claim Span Identification (CSI)</h2>
-            <p>A brief description of Project 2...</p>
+    <main>
+        <div class="content-wrapper">
+            <h1>Projects</h1>
+            <div class="project-card" id="project1">
+                <h2>Intent based CounterSpeech</h2>
+                <p>A brief description of Project 1...</p>
+            </div>
+            <div class="project-card" id="project2">
+                <h2>Claim Span Identification (CSI)</h2>
+                <p>A brief description of Project 2...</p>
+            </div>
         </div>
     </main>
 
