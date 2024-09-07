@@ -57,7 +57,7 @@ nav a:hover {
 }
 
 main {
-    margin-top: 5rem; /* Added margin to prevent cutting off */
+    margin-top: 10rem; /* Added margin to prevent cutting off */
     padding: 2rem;
     max-width: 800px;
     margin-left: auto;
@@ -277,7 +277,7 @@ footer {
 
 @media (max-width: 768px) {
     main {
-        margin-top: 5rem; /* Adjusted for mobile */
+        margin-top: 10rem; /* Adjusted for mobile */
         padding: 2rem 1rem 2rem;
     }
 
