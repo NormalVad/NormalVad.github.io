@@ -57,8 +57,9 @@ nav a:hover {
 }
 
 main {
-    margin-top: 10rem; /* Added margin to prevent cutting off */
-    padding: 2rem;
+    padding-top: 8rem; /* Ensure enough space from the header */
+    padding-left: 2rem;
+    padding-right: 2rem;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -277,8 +278,9 @@ footer {
 
 @media (max-width: 768px) {
     main {
-        margin-top: 10rem; /* Adjusted for mobile */
-        padding: 2rem 1rem 2rem;
+        padding-top: 8rem; /* Adjusted for mobile */
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     nav ul {
