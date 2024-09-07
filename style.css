@@ -21,8 +21,8 @@ body {
 
 header {
     background-color: var(--secondary-bg);
-    height: 50px; 
-    padding: 0.5rem;
+    height: auto; 
+    padding: 0.5rem 1rem;
     position: fixed;
     top: 0;
     width: 100%;
