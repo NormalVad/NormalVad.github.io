@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const content = document.getElementById('content');
     const sidebar = document.getElementById('sidebar');
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggle = document.getElementById('theme-toggle');
     const searchInput = document.getElementById('search-input');
     const searchIcon = document.getElementById('search-icon');
     const searchBar = document.getElementById('search-bar');
@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme toggle functionality
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
+        themeToggle.classList.toggle('fa-sun');
+        themeToggle.classList.toggle('fa-moon');
     });
 
     // Search functionality
