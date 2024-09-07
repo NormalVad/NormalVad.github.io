@@ -19,6 +19,15 @@ body {
     line-height: 1.6;
 }
 
+body.light-theme {
+    --primary-bg: #FFFFFF;
+    --secondary-bg: #F0F0F0;
+    --primary-text: #121212;
+    --secondary-text: #4A4A4A;
+    --accent-color: #2980B9;
+    --heading-color: #3498DB;
+}
+
 header {
     background-color: var(--secondary-bg);
     padding: 0.5rem 1rem;
