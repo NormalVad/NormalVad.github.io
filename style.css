@@ -201,27 +201,32 @@
   }
   
   .profile-pic {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
   
+  h1 {
+    font-size: 2em;
+    margin: 0.5rem 0;
+  }
   
-  position, .university {
-    margin: 0.25rem 0; /* Reduced margin */
-    font-size: 1.1em; /* Slightly larger font size */
+  .position, .university {
+    margin: 0.25rem 0;
+    font-size: 1em;
+    font-weight: bold;
   }
   
   .social-links {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin: 0.75rem 0; /* Reduced margin */
+    gap: 0.75rem;
+    margin: 0.5rem 0;
   }
   
-  social-links a {
+  .social-links a {
     font-size: 1.5rem;
     color: var(--accent-color);
     transition: color 0.3s ease;
@@ -230,19 +235,20 @@
   .social-links a:hover {
     color: var(--primary-text);
   }
+  
+  .description {
+    margin-top: 1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    text-align: justify;
+  }
 
   .social-links svg {
     width: 1.5rem;
     height: 1.5rem;
     vertical-align: middle;
 }
-  
-.description {
-    margin-top: 1rem;
-    line-height: 1.6;
-    max-width: 600px; /* Limit the width of the description for better readability */
-  }
-  
+
   @media (max-width: 768px) {
     .grid {
       grid-template-columns: 1fr;
