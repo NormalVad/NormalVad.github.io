@@ -208,21 +208,27 @@
     margin-bottom: 1rem;
   }
   
-  .position, .university {
-    margin: 0.5rem 0;
+  
+  position, .university {
+    margin: 0.25rem 0; /* Reduced margin */
+    font-size: 1.1em; /* Slightly larger font size */
   }
   
   .social-links {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin: 1rem 0;
+    margin: 0.75rem 0; /* Reduced margin */
   }
   
-  .social-links a {
+  social-links a {
     font-size: 1.5rem;
     color: var(--accent-color);
     transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: var(--primary-text);
   }
 
   .social-links svg {
@@ -231,13 +237,10 @@
     vertical-align: middle;
 }
   
-  .social-links a:hover {
-    color: var(--primary-text);
-  }
-  
-  .description {
+.description {
     margin-top: 1rem;
     line-height: 1.6;
+    max-width: 600px; /* Limit the width of the description for better readability */
   }
   
   @media (max-width: 768px) {
