@@ -1,21 +1,22 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f6f9fc;
+    background-color: #121212;  /* Dark background */
+    color: #ffffff; /* Light text color */
 }
 
 header {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #1f1f1f;
     padding: 1rem;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 nav ul {
@@ -29,13 +30,14 @@ nav ul li {
 }
 
 nav a {
-    color: #fff;
+    color: #ffdd57;  /* Light yellow color for links */
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav a:hover {
-    color: #ffdd57;
+    color: #ffbb33;  /* Altered hover color for links */
+    transform: scale(1.1);
 }
 
 main {
@@ -49,15 +51,15 @@ aside {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #fff;
+    background-color: #1f1f1f;
     padding: 1rem;
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #444;
     width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 footer {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #1f1f1f;
     text-align: center;
     padding: 1rem;
     margin-top: auto;
@@ -70,23 +72,23 @@ footer {
 }
 
 .project-card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #444;
+    border-radius: 10px;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: #fff;
+    background-color: #2a2a2a;
     transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
 }
 
 .project-card:hover {
-    background-color: #e9ecef;
-    transform: scale(1.02);
+    background-color: #3b3b3b;
+    transform: scale(1.03);
 }
 
 .progress-bar {
     height: 10px;
-    background-color: #007bff;
+    background-color: #ffdd57;
     border-radius: 10px;
     margin-top: 5px;
 }
