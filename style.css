@@ -21,7 +21,7 @@ body {
 
 header {
     background-color: var(--secondary-bg);
-    height: 35px; /* Set a specific height for the header */
+    height: 70px; /* Set a specific height for the header */
     padding: 1rem;
     position: fixed;
     top: 0;
@@ -58,9 +58,8 @@ nav a:hover {
 }
 
 main {
-    padding-top: 90px; /* Ensure enough space from the header */
-    padding-left: 2rem;
-    padding-right: 2rem;
+    margin-top: 70px; /* Matches the header height */
+    padding: 2rem;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -279,9 +278,8 @@ footer {
 
 @media (max-width: 768px) {
     main {
-        padding-top: 8rem; /* Adjusted for mobile */
-        padding-left: 1rem;
-        padding-right: 1rem;
+        margin-top: 70px; /* Matches the header height */
+        padding: 2rem 1rem 2rem;
     }
 
     nav ul {
