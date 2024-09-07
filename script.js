@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const content = document.getElementById('content');
     const sidebar = document.getElementById('sidebar');
     const themeToggle = document.querySelector('.theme-toggle');
+    const searchInput = document.getElementById('search-input');
 
     function updateSidebar() {
         const headings = content.querySelectorAll('h2');
@@ -24,6 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
+    function searchContent() {
+        const filter = searchInput.value.toLowerCase();
+        const items = content.querySelectorAll('h2, h3, p, li');
+        items.forEach(item => {
+            if (item.textContent.toLowerCase().includes(filter)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
     // Update sidebar on page load
     updateSidebar();
 
@@ -31,6 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
     });
+
+    // Search functionality
+    searchInput.addEventListener('input', searchContent);
 
     // Make loadProject function available globally
     window.loadProject = loadProject;
