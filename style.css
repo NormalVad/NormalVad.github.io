@@ -1,8 +1,8 @@
 :root {
     --primary-bg: #121212;
     --secondary-bg: #1F1F1F;
-    --primary-text: #F0F0F0; /* Slightly lighter for better readability */
-    --secondary-text: #B0B0B0; /* Softer gray for secondary text */
+    --primary-text: #F0F0F0;
+    --secondary-text: #B0B0B0;
     --accent-color: #4A90E2;
     --heading-color: #64B5F6;
 }
@@ -57,7 +57,7 @@ nav a:hover {
 }
 
 main {
-    padding: 8rem 2rem 2rem; /* Increased padding to prevent cutting off */
+    padding: 10rem 2rem 2rem; /* Increased padding to prevent cut off */
     max-width: 800px;
     margin: 0 auto;
     flex-grow: 1;
@@ -275,7 +275,7 @@ footer {
 
 @media (max-width: 768px) {
     main {
-        padding: 8rem 1rem 2rem; /* Adjusted for mobile */
+        padding: 10rem 1rem 2rem; /* Adjusted for mobile */
     }
 
     nav ul {
