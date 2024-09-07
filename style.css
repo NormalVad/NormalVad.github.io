@@ -57,7 +57,7 @@ nav a:hover {
 }
 
 main {
-    padding: 14rem 2rem 2rem; /* Increased padding to prevent cut off */
+    padding: 14rem 2rem 2rem; /* Further increased padding */
     max-width: 800px;
     margin: 0 auto;
     flex-grow: 1;
@@ -157,7 +157,7 @@ ul {
     transition: color 0.3s ease;
 }
 
-social-links a:hover {
+.social-links a:hover {
     color: var(--primary-text);
 }
 
@@ -275,7 +275,7 @@ footer {
 
 @media (max-width: 768px) {
     main {
-        padding: 12rem 1rem 2rem; /* Adjusted for mobile */
+        padding: 14rem 1rem 2rem; /* Adjusted for mobile */
     }
 
     nav ul {
