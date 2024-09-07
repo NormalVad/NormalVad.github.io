@@ -1,8 +1,8 @@
 :root {
     --primary-bg: #121212;
     --secondary-bg: #1F1F1F;
-    --primary-text: #FFFFFF;
-    --secondary-text: #E0E0E0;
+    --primary-text: #F0F0F0; /* Slightly lighter for better readability */
+    --secondary-text: #B0B0B0; /* Softer gray for secondary text */
     --accent-color: #4A90E2;
     --heading-color: #64B5F6;
 }
@@ -57,7 +57,7 @@ nav a:hover {
 }
 
 main {
-    padding: 6rem 2rem 2rem;
+    padding: 8rem 2rem 2rem; /* Increased padding to prevent cutting off */
     max-width: 800px;
     margin: 0 auto;
     flex-grow: 1;
@@ -90,7 +90,6 @@ main {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-
 .profile-pic {
     width: 150px;
     height: 150px;
@@ -122,8 +121,6 @@ ul {
     margin-left: 1.5rem;
     color: var(--secondary-text);
 }
-
-
 
 .position, .university {
     margin: 0.25rem 0;
@@ -262,7 +259,7 @@ footer {
 
 @media (max-width: 768px) {
     main {
-        padding: 6rem 1rem 2rem;
+        padding: 8rem 1rem 2rem; /* Adjusted for mobile */
     }
 
     nav ul {
