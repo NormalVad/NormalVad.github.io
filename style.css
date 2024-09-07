@@ -21,7 +21,6 @@ body {
 
 header {
     background-color: var(--secondary-bg);
-    height: auto;
     padding: 0.5rem 1rem;
     position: fixed;
     top: 0;

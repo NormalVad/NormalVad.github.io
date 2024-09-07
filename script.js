@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const content = document.getElementById('content');
     const sidebar = document.getElementById('sidebar');
+    const themeToggle = document.querySelector('.theme-toggle');
 
     function updateSidebar() {
         const headings = content.querySelectorAll('h2');
@@ -26,13 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update sidebar on page load
     updateSidebar();
 
-    // Make loadProject function available globally
-    window.loadProject = loadProject;
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.querySelector('.theme-toggle');
+    // Theme toggle functionality
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
     });
+
+    // Make loadProject function available globally
+    window.loadProject = loadProject;
 });
