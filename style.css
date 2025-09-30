@@ -211,39 +211,40 @@ nav a.active {
     transform: rotate(20deg);
 }
 
+/* Main content area - centered with max-width */
 main {
-    padding: 3rem 2rem;
-    max-width: 900px;
+    padding: 2rem;
+    max-width: 1400px;
     margin: 0 auto;
     flex-grow: 1;
     width: 100%;
     box-sizing: border-box;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
-.center-content {
+/* Content wrapper - takes up main space, leaves room for sidebar */
+.content-wrapper {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+
+/* Center content styling for home page */
+.center-content .content-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0;
 }
 
-.left-content {
+/* Left content styling for other pages */
+.left-content .content-wrapper {
     text-align: left;
-    align-items: flex-start;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0;
-}
-
-.content-wrapper {
-    max-width: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
 }
 
 .education-item, .experience-item, .project-card {
@@ -466,11 +467,12 @@ ol li::before {
     font-weight: 600;
 }
 
+/* Sidebar - sticky positioning within flex layout */
 aside {
-    position: fixed;
+    position: sticky;
     top: calc(64px + 2rem);
-    right: max(20px, calc((100vw - 1100px) / 2));
-    width: 220px;
+    width: 240px;
+    min-width: 240px;
     background-color: var(--secondary-bg);
     padding: 1.5rem;
     border-radius: var(--radius-xl);
@@ -479,13 +481,22 @@ aside {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     transition: all var(--transition-normal);
+    align-self: flex-start;
     max-height: calc(100vh - 64px - 4rem);
     overflow-y: auto;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
     aside {
         display: none;
+    }
+    
+    main {
+        justify-content: center;
+    }
+    
+    .content-wrapper {
+        max-width: 100%;
     }
 }
 
@@ -1144,17 +1155,14 @@ button:active {
     }
 
     main {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
         max-width: 100%;
+        flex-direction: column;
+        gap: 0;
     }
 
-    .center-content, .left-content {
-        padding: 0;
-        max-width: 100%;
-    }
-    
     .content-wrapper {
-        padding: 0 1rem;
+        padding: 0 0.5rem;
         max-width: 100%;
     }
 
