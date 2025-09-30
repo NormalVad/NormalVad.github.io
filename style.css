@@ -239,25 +239,10 @@ main {
     overflow: hidden;
 }
 
-.education-item::before, .experience-item::before, .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--accent-color), var(--accent-hover));
-    transition: width var(--transition-normal);
-}
-
 .education-item:hover, .experience-item:hover, .project-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
     border-color: var(--accent-color);
-}
-
-.education-item:hover::before, .experience-item:hover::before, .project-card:hover::before {
-    width: 6px;
 }
 
 .profile-pic {
@@ -834,18 +819,7 @@ button:active {
 /* Experience Page Styling */
 .timeline {
     position: relative;
-    padding-left: 2rem;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 1rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, var(--accent-color), var(--accent-hover));
-    border-radius: 1px;
+    padding-left: 0;
 }
 
 .experience-header {
@@ -895,8 +869,7 @@ button:active {
     font-style: italic;
     color: var(--secondary-text);
     margin-bottom: 1.5rem;
-    padding-left: 1rem;
-    border-left: 3px solid var(--accent-color);
+    padding-left: 0;
 }
 
 .experience-content h4 {
@@ -1191,11 +1164,7 @@ button:active {
 
     /* Mobile-specific improvements for new layouts */
     .timeline {
-        padding-left: 1.5rem;
-    }
-
-    .timeline::before {
-        left: 0.75rem;
+        padding-left: 0;
     }
 
     .experience-header {
