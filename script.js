@@ -6,10 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchIcon = document.getElementById('search-icon');
     const searchBar = document.getElementById('search-bar');
     
+    // Verify all elements exist
+    if (!searchInput || !searchIcon || !searchBar) {
+        console.error('Search elements not found!', { searchInput, searchIcon, searchBar });
+        return;
+    }
+    
     // Create search suggestions container
     const searchSuggestions = document.createElement('div');
     searchSuggestions.id = 'search-suggestions';
     searchSuggestions.style.display = 'none';
+    searchBar.style.position = 'relative';
     searchBar.appendChild(searchSuggestions);
 
     // Enhanced search data with more comprehensive content
@@ -222,14 +229,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value;
+        console.log('Search input changed:', query);
         if (query.length > 0) {
             searchContent(query);
+            searchBar.classList.add('active');
         } else {
             showSearchHistory();
         }
     });
 
     searchInput.addEventListener('focus', () => {
+        console.log('Search input focused');
+        searchBar.classList.add('active');
         if (searchInput.value) {
             searchContent(searchInput.value);
         } else {
@@ -246,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
         if (!searchBar.contains(e.target)) {
             searchSuggestions.style.display = 'none';
+            searchBar.classList.remove('active');
         }
     });
 
@@ -341,10 +353,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Debug: Test search functionality
-    console.log('Enhanced search system loaded');
-    console.log('Search input:', searchInput);
-    console.log('Search suggestions:', searchSuggestions);
-    console.log('Available search data:', searchData.length, 'items');
+    console.log('✓ Enhanced search system loaded');
+    console.log('✓ Search input element:', searchInput ? 'Found' : 'NOT FOUND');
+    console.log('✓ Search suggestions container:', searchSuggestions ? 'Created' : 'FAILED');
+    console.log('✓ Available search data:', searchData.length, 'items');
+    console.log('✓ Search bar element:', searchBar ? 'Found' : 'NOT FOUND');
     
     // Test function for debugging
     window.testSearch = function(query = 'home') {

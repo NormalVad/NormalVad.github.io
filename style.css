@@ -202,11 +202,12 @@ nav a:active {
 
 main {
     padding: 3rem 2rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     flex-grow: 1;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
 }
 
 .center-content {
@@ -214,17 +215,24 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 0;
 }
 
 .left-content {
     text-align: left;
     align-items: flex-start;
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 0;
+}
+
+.content-wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .education-item, .experience-item, .project-card {
@@ -450,7 +458,7 @@ ol li::before {
 aside {
     position: fixed;
     top: 100px;
-    right: 20px;
+    right: calc((100vw - 1200px) / 2 + 20px);
     width: 220px;
     background-color: var(--secondary-bg);
     padding: 1.5rem;
@@ -460,6 +468,14 @@ aside {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     transition: all var(--transition-normal);
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+@media (max-width: 1400px) {
+    aside {
+        right: 20px;
+    }
 }
 
 aside:hover {
@@ -566,13 +582,14 @@ footer {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
-    z-index: 1000;
+    z-index: 1002;
     max-height: 400px;
     overflow-y: auto;
     margin-top: 0.5rem;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    display: none; /* Initially hidden */
+    display: none;
+    min-width: 300px;
 }
 
 .search-suggestion {
@@ -774,6 +791,7 @@ footer {
 /* Enhanced search bar */
 .search-bar {
     position: relative;
+    z-index: 1001;
 }
 
 .search-bar.active {
@@ -783,6 +801,10 @@ footer {
 
 .search-bar.active input {
     width: 250px;
+}
+
+.search-bar.active #search-suggestions {
+    display: block !important;
 }
 
 /* Focus states for better accessibility */
@@ -823,9 +845,11 @@ button:active {
     border-bottom: 2px solid var(--border-color);
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 .page-header h1 {
+    margin-top: 0;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--heading-color), var(--accent-color));
     -webkit-background-clip: text;
@@ -833,6 +857,7 @@ button:active {
     background-clip: text;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .page-header .intro {
@@ -842,6 +867,7 @@ button:active {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 /* Experience Page Styling */
@@ -1156,25 +1182,33 @@ button:active {
     }
 
     .center-content, .left-content {
-        padding: 1rem 0.5rem;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    .content-wrapper {
+        padding: 0 1rem;
         max-width: 100%;
     }
 
     .page-header {
-        padding: 0 1rem;
+        padding: 0;
         margin-bottom: 2rem;
+        width: 100%;
     }
 
     .page-header h1 {
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-size: clamp(1.5rem, 6vw, 2rem);
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: auto;
     }
 
     .page-header .intro {
-        font-size: 1rem;
+        font-size: 0.95rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: auto;
     }
 
     .description {
