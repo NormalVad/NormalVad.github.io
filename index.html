@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayush Goyal - Personal Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -29,27 +32,32 @@
     <main>
         <div class="content-wrapper">
             <section id="home" class="center-content">
-                <img src="ayush.JPG" alt="Ayush Goyal" class="profile-pic">
-                <h1>Ayush Goyal</h1>
-                <p class="position">Masters in Computer Science</p>
-                <p class="university">University of Southern California</p>
+                <div class="hero-section">
+                    <img src="ayush.JPG" alt="Ayush Goyal" class="profile-pic">
+                    <div class="hero-text">
+                        <h1>Ayush Goyal</h1>
+                        <p class="position">Masters in Computer Science</p>
+                        <p class="university">University of Southern California</p>
+                    </div>
+                </div>
+                
                 <div class="social-links">
-                    <a href="mailto:ayushgoyal5720@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/ayushgoyal0507/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://x.com/anakinwader57" target="_blank" title="X (Twitter)">
+                    <a href="mailto:ayushgoyal5720@gmail.com" title="Email" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/ayushgoyal0507/" target="_blank" title="LinkedIn" aria-label="Visit LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/anakinwader57" target="_blank" title="X (Twitter)" aria-label="Visit X profile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                     </a>
-                    <a href="https://github.com/NormalVad" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="Ayush_resume.pdf" target="_blank" title="CV" class="cv-link">CV</a>
+                    <a href="https://github.com/NormalVad" target="_blank" title="GitHub" aria-label="Visit GitHub profile"><i class="fab fa-github"></i></a>
+                    <a href="Ayush_resume.pdf" target="_blank" title="CV" class="cv-link" aria-label="Download CV">CV</a>
                 </div>
-                <div class="description">
-                    <p><strong>Hi, I’m Ayush Goyal, a Computer Science graduate student at the University of Southern California, actively seeking New Grad roles (2026). I hold a bachelor’s in Mathematics &amp; Computing from IIT Delhi. My expertise spans NLP, Computer Vision, XAI, and multimodal AI.</strong></p>
+                
+                <article class="description">
+                    <p><strong>Hi, I'm Ayush Goyal, a Computer Science graduate student at the University of Southern California, actively seeking New Grad roles (2026). I hold a bachelor's in Mathematics &amp; Computing from IIT Delhi. My expertise spans NLP, Computer Vision, XAI, and multimodal AI.</strong></p>
                     <p><strong>As a Research Assistant at KAIST, I raised XAI metrics by 7% on text classification models. At Adobe Research, I achieved 6.5× StyleGAN2 compression with minimal FID change (U.S. patent pending). This summer, I was a Quant Strat intern at Goldman Sachs (FICC Mortgage Strats &amp; IRP SMM) in New York, building CMBS valuation models and analyzing spreader execution slippage. I also built multimodal AI systems to counter online hate speech during my IIT Delhi thesis.</strong></p>
-                    <p><strong>I’m passionate about applying AI to real-world problems and excited to contribute to innovative teams in industry.</strong></p>
-
-                </div>
+                    <p><strong>I'm passionate about applying AI to real-world problems and excited to contribute to innovative teams in industry.</strong></p>
+                </article>
             </section>
         </div>
     </main>
