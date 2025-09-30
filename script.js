@@ -9,6 +9,274 @@ document.addEventListener('DOMContentLoaded', () => {
     searchSuggestions.id = 'search-suggestions';
     searchBar.appendChild(searchSuggestions);
 
+    // Advanced Search System
+    class AdvancedSearch {
+        constructor() {
+            this.searchIndex = this.buildSearchIndex();
+            this.searchHistory = this.loadSearchHistory();
+            this.searchResults = [];
+            this.selectedIndex = -1;
+            this.minSearchLength = 1;
+            this.maxSuggestions = 8;
+            this.debounceDelay = 200;
+        }
+
+        buildSearchIndex() {
+            return {
+                pages: [
+                    {
+                        id: 'home',
+                        title: 'Home',
+                        url: 'index.html',
+                        keywords: ['home', 'about', 'profile', 'ayush', 'goyal', 'computer science', 'usc', 'masters'],
+                        content: 'Ayush Goyal Computer Science graduate student University of Southern California NLP Computer Vision XAI multimodal AI research assistant KAIST Adobe Research Goldman Sachs',
+                        category: 'main',
+                        priority: 10
+                    },
+                    {
+                        id: 'experience',
+                        title: 'Experience',
+                        url: 'experience.html',
+                        keywords: ['experience', 'work', 'internship', 'research', 'kaist', 'adobe', 'goldman sachs', 'quantitative', 'strategy'],
+                        content: 'SAIL KAIST Research Assistant Adobe Research Intern Goldman Sachs Quant Strat FICC Mortgage Strats IRP SMM CMBS valuation models XAI metrics StyleGAN2 compression',
+                        category: 'experience',
+                        priority: 9
+                    },
+                    {
+                        id: 'projects',
+                        title: 'Projects',
+                        url: 'projects.html',
+                        keywords: ['projects', 'portfolio', 'github', 'counter-speech', 'nlp', 'fact-checking', 'ai', 'machine learning'],
+                        content: 'Intent based CounterSpeech Claim Span Identification CSI AI-powered fact-checking argument analysis hate speech multimodal AI systems',
+                        category: 'projects',
+                        priority: 8
+                    },
+                    {
+                        id: 'education',
+                        title: 'Education',
+                        url: 'education.html',
+                        keywords: ['education', 'university', 'usc', 'iit delhi', 'courses', 'gpa', 'masters', 'bachelor', 'computer science'],
+                        content: 'University of Southern California USC MS Computer Science IIT Delhi BTech Mathematics Computing CSCI courses algorithms NLP robotics deep learning computer vision',
+                        category: 'education',
+                        priority: 7
+                    }
+                ],
+                skills: [
+                    { term: 'Natural Language Processing', aliases: ['NLP', 'text processing', 'language models'] },
+                    { term: 'Computer Vision', aliases: ['CV', 'image processing', 'visual recognition'] },
+                    { term: 'Explainable AI', aliases: ['XAI', 'interpretable AI', 'model explanation'] },
+                    { term: 'Machine Learning', aliases: ['ML', 'deep learning', 'neural networks'] },
+                    { term: 'Python', aliases: ['py', 'python programming'] },
+                    { term: 'PyTorch', aliases: ['pytorch', 'deep learning framework'] },
+                    { term: 'Quantitative Analysis', aliases: ['quant', 'financial modeling', 'risk analysis'] },
+                    { term: 'Research', aliases: ['academic research', 'scientific research'] }
+                ],
+                companies: [
+                    { name: 'KAIST', aliases: ['Korea Advanced Institute', 'SAIL KAIST'] },
+                    { name: 'Adobe', aliases: ['Adobe Research', 'Adobe Inc'] },
+                    { name: 'Goldman Sachs', aliases: ['GS', 'Goldman', 'FICC', 'Mortgage Strats'] },
+                    { name: 'USC', aliases: ['University of Southern California'] },
+                    { name: 'IIT Delhi', aliases: ['IITD', 'Indian Institute of Technology'] }
+                ]
+            };
+        }
+
+        // Fuzzy search algorithm
+        fuzzyMatch(query, text, threshold = 0.6) {
+            if (!query || !text) return 0;
+            
+            const queryLower = query.toLowerCase();
+            const textLower = text.toLowerCase();
+            
+            // Exact match gets highest score
+            if (textLower.includes(queryLower)) {
+                return 1.0;
+            }
+            
+            // Levenshtein distance-based scoring
+            const distance = this.levenshteinDistance(queryLower, textLower);
+            const maxLength = Math.max(queryLower.length, textLower.length);
+            const similarity = 1 - (distance / maxLength);
+            
+            return similarity >= threshold ? similarity : 0;
+        }
+
+        levenshteinDistance(str1, str2) {
+            const matrix = [];
+            for (let i = 0; i <= str2.length; i++) {
+                matrix[i] = [i];
+            }
+            for (let j = 0; j <= str1.length; j++) {
+                matrix[0][j] = j;
+            }
+            for (let i = 1; i <= str2.length; i++) {
+                for (let j = 1; j <= str1.length; j++) {
+                    if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1,
+                            matrix[i][j - 1] + 1,
+                            matrix[i - 1][j] + 1
+                        );
+                    }
+                }
+            }
+            return matrix[str2.length][str1.length];
+        }
+
+        // Advanced search with ranking
+        search(query) {
+            if (!query || query.length < this.minSearchLength) {
+                return [];
+            }
+
+            const queryLower = query.toLowerCase();
+            const results = [];
+
+            // Search pages
+            this.searchIndex.pages.forEach(page => {
+                let score = 0;
+                
+                // Title match (highest priority)
+                const titleScore = this.fuzzyMatch(queryLower, page.title);
+                if (titleScore > 0) score += titleScore * 3;
+                
+                // Keyword match
+                const keywordMatch = page.keywords.some(keyword => 
+                    keyword.toLowerCase().includes(queryLower)
+                );
+                if (keywordMatch) score += 2;
+                
+                // Content match
+                const contentScore = this.fuzzyMatch(queryLower, page.content);
+                if (contentScore > 0) score += contentScore;
+                
+                // Priority boost
+                score += page.priority * 0.1;
+                
+                if (score > 0) {
+                    results.push({
+                        ...page,
+                        score,
+                        type: 'page',
+                        matchType: titleScore > 0.8 ? 'title' : keywordMatch ? 'keyword' : 'content'
+                    });
+                }
+            });
+
+            // Search skills
+            this.searchIndex.skills.forEach(skill => {
+                const skillScore = this.fuzzyMatch(queryLower, skill.term);
+                const aliasScore = Math.max(...skill.aliases.map(alias => 
+                    this.fuzzyMatch(queryLower, alias)
+                ));
+                
+                const maxScore = Math.max(skillScore, aliasScore);
+                if (maxScore > 0.5) {
+                    results.push({
+                        title: skill.term,
+                        url: null,
+                        score: maxScore * 2,
+                        type: 'skill',
+                        matchType: 'skill',
+                        aliases: skill.aliases
+                    });
+                }
+            });
+
+            // Search companies
+            this.searchIndex.companies.forEach(company => {
+                const companyScore = this.fuzzyMatch(queryLower, company.name);
+                const aliasScore = Math.max(...company.aliases.map(alias => 
+                    this.fuzzyMatch(queryLower, alias)
+                ));
+                
+                const maxScore = Math.max(companyScore, aliasScore);
+                if (maxScore > 0.5) {
+                    results.push({
+                        title: company.name,
+                        url: null,
+                        score: maxScore * 1.5,
+                        type: 'company',
+                        matchType: 'company',
+                        aliases: company.aliases
+                    });
+                }
+            });
+
+            // Sort by score and return top results
+            return results
+                .sort((a, b) => b.score - a.score)
+                .slice(0, this.maxSuggestions);
+        }
+
+        // Generate search suggestions
+        generateSuggestions(query) {
+            const results = this.search(query);
+            const suggestions = [];
+
+            // Add search history suggestions
+            if (query.length >= 2) {
+                const historyMatches = this.searchHistory
+                    .filter(term => term.toLowerCase().includes(query.toLowerCase()))
+                    .slice(0, 3);
+                
+                historyMatches.forEach(term => {
+                    suggestions.push({
+                        title: term,
+                        type: 'history',
+                        icon: 'fas fa-history'
+                    });
+                });
+            }
+
+            // Add main results
+            results.forEach(result => {
+                let icon = 'fas fa-file';
+                if (result.type === 'skill') icon = 'fas fa-code';
+                else if (result.type === 'company') icon = 'fas fa-building';
+                else if (result.matchType === 'title') icon = 'fas fa-star';
+                
+                suggestions.push({
+                    title: result.title,
+                    url: result.url,
+                    type: result.type,
+                    icon: icon,
+                    score: result.score,
+                    matchType: result.matchType
+                });
+            });
+
+            return suggestions.slice(0, this.maxSuggestions);
+        }
+
+        // Save search history
+        saveSearchHistory(query) {
+            if (!query || query.length < 2) return;
+            
+            this.searchHistory = this.searchHistory.filter(term => 
+                term.toLowerCase() !== query.toLowerCase()
+            );
+            this.searchHistory.unshift(query);
+            this.searchHistory = this.searchHistory.slice(0, 10); // Keep last 10 searches
+            
+            localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
+        }
+
+        // Load search history
+        loadSearchHistory() {
+            try {
+                return JSON.parse(localStorage.getItem('searchHistory')) || [];
+            } catch {
+                return [];
+            }
+        }
+    }
+
+    // Initialize advanced search
+    const advancedSearch = new AdvancedSearch();
+
     // Add smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -72,107 +340,147 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Enhanced search functionality with keyboard navigation
-    let searchResults = [];
-    let selectedIndex = -1;
-
-    async function searchContent() {
-        const filter = searchInput.value.toLowerCase().trim();
-        if (filter.length < 2) {
+    // Advanced search functionality with autocomplete
+    function performSearch() {
+        const query = searchInput.value.trim();
+        
+        if (query.length < advancedSearch.minSearchLength) {
             searchSuggestions.innerHTML = '';
-            searchResults = [];
-            selectedIndex = -1;
+            advancedSearch.searchResults = [];
+            advancedSearch.selectedIndex = -1;
             return;
         }
 
-        const pages = ['index.html', 'experience.html', 'projects.html', 'education.html'];
-        const results = [];
-
-        for (const page of pages) {
-            try {
-                const response = await fetch(page);
-                const html = await response.text();
-                const doc = new DOMParser().parseFromString(html, 'text/html');
-                
-                const pageContent = doc.body.textContent || "";
-                const title = doc.querySelector('title').textContent;
-
-                if (pageContent.toLowerCase().includes(filter)) {
-                    const snippet = getSnippet(pageContent, filter);
-                    results.push({ title, url: page, snippet });
-                }
-            } catch (error) {
-                console.error(`Error fetching ${page}:`, error);
-            }
-        }
-
-        searchResults = results;
-        displaySearchSuggestions(results);
+        const suggestions = advancedSearch.generateSuggestions(query);
+        advancedSearch.searchResults = suggestions;
+        displayAdvancedSuggestions(suggestions, query);
     }
 
-    function getSnippet(content, query) {
-        const index = content.toLowerCase().indexOf(query);
-        const start = Math.max(0, index - 50);
-        const end = Math.min(content.length, index + query.length + 50);
-        return content.slice(start, end).trim();
-    }
-
-    function displaySearchSuggestions(results) {
+    function displayAdvancedSuggestions(suggestions, query) {
         searchSuggestions.innerHTML = '';
         
-        if (results.length === 0) {
-            searchSuggestions.innerHTML = '<div class="search-suggestion"><p>No results found.</p></div>';
-        } else {
-            results.forEach((result, index) => {
-                const resultItem = document.createElement('div');
-                resultItem.className = 'search-suggestion';
-                resultItem.innerHTML = `
-                    <h3><a href="${result.url}">${result.title}</a></h3>
-                    <p>${result.snippet}</p>
-                `;
-                
-                resultItem.addEventListener('click', () => {
-                    window.location.href = result.url;
-                });
-                
-                searchSuggestions.appendChild(resultItem);
-            });
+        if (suggestions.length === 0) {
+            searchSuggestions.innerHTML = `
+                <div class="search-suggestion no-results">
+                    <i class="fas fa-search"></i>
+                    <span>No results found for "${query}"</span>
+                </div>
+            `;
+            return;
         }
+
+        suggestions.forEach((suggestion, index) => {
+            const suggestionItem = document.createElement('div');
+            suggestionItem.className = 'search-suggestion';
+            suggestionItem.setAttribute('data-index', index);
+            
+            let content = '';
+            if (suggestion.type === 'history') {
+                content = `
+                    <div class="suggestion-icon">
+                        <i class="${suggestion.icon}"></i>
+                    </div>
+                    <div class="suggestion-content">
+                        <div class="suggestion-title">${highlightMatch(suggestion.title, query)}</div>
+                        <div class="suggestion-type">Recent search</div>
+                    </div>
+                `;
+            } else if (suggestion.url) {
+                content = `
+                    <div class="suggestion-icon">
+                        <i class="${suggestion.icon}"></i>
+                    </div>
+                    <div class="suggestion-content">
+                        <div class="suggestion-title">${highlightMatch(suggestion.title, query)}</div>
+                        <div class="suggestion-type">${suggestion.type.charAt(0).toUpperCase() + suggestion.type.slice(1)}</div>
+                    </div>
+                    <div class="suggestion-action">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                `;
+            } else {
+                content = `
+                    <div class="suggestion-icon">
+                        <i class="${suggestion.icon}"></i>
+                    </div>
+                    <div class="suggestion-content">
+                        <div class="suggestion-title">${highlightMatch(suggestion.title, query)}</div>
+                        <div class="suggestion-type">${suggestion.type.charAt(0).toUpperCase() + suggestion.type.slice(1)}</div>
+                    </div>
+                `;
+            }
+            
+            suggestionItem.innerHTML = content;
+            
+            suggestionItem.addEventListener('click', () => {
+                if (suggestion.url) {
+                    advancedSearch.saveSearchHistory(query);
+                    window.location.href = suggestion.url;
+                } else {
+                    // For skills/companies, search for related content
+                    searchInput.value = suggestion.title;
+                    performSearch();
+                }
+            });
+            
+            searchSuggestions.appendChild(suggestionItem);
+        });
     }
 
-    // Keyboard navigation for search
+    function highlightMatch(text, query) {
+        if (!query) return text;
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    // Enhanced keyboard navigation
     searchInput.addEventListener('keydown', (e) => {
-        if (searchSuggestions.children.length === 0) return;
+        const suggestions = searchSuggestions.children;
+        if (suggestions.length === 0) return;
 
         switch (e.key) {
             case 'ArrowDown':
                 e.preventDefault();
-                selectedIndex = Math.min(selectedIndex + 1, searchSuggestions.children.length - 1);
+                advancedSearch.selectedIndex = Math.min(
+                    advancedSearch.selectedIndex + 1, 
+                    suggestions.length - 1
+                );
                 updateSelection();
                 break;
             case 'ArrowUp':
                 e.preventDefault();
-                selectedIndex = Math.max(selectedIndex - 1, -1);
+                advancedSearch.selectedIndex = Math.max(advancedSearch.selectedIndex - 1, -1);
                 updateSelection();
                 break;
             case 'Enter':
                 e.preventDefault();
-                if (selectedIndex >= 0 && searchResults[selectedIndex]) {
-                    window.location.href = searchResults[selectedIndex].url;
+                if (advancedSearch.selectedIndex >= 0 && 
+                    advancedSearch.searchResults[advancedSearch.selectedIndex]) {
+                    const selectedSuggestion = advancedSearch.searchResults[advancedSearch.selectedIndex];
+                    if (selectedSuggestion.url) {
+                        advancedSearch.saveSearchHistory(searchInput.value.trim());
+                        window.location.href = selectedSuggestion.url;
+                    }
                 }
                 break;
             case 'Escape':
                 searchSuggestions.innerHTML = '';
                 searchInput.blur();
+                advancedSearch.selectedIndex = -1;
                 break;
         }
     });
 
     function updateSelection() {
         Array.from(searchSuggestions.children).forEach((item, index) => {
-            item.classList.toggle('selected', index === selectedIndex);
+            item.classList.toggle('selected', index === advancedSearch.selectedIndex);
         });
     }
+
+    // Reset selection when typing
+    searchInput.addEventListener('input', () => {
+        advancedSearch.selectedIndex = -1;
+    });
 
     function toggleTheme() {
         document.body.classList.toggle('light-theme');
@@ -206,8 +514,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme toggle functionality
     themeToggle.addEventListener('click', toggleTheme);
 
-    // Search functionality
-    searchInput.addEventListener('input', debounce(searchContent, 300));
+    // Advanced search functionality
+    searchInput.addEventListener('input', debounce(performSearch, advancedSearch.debounceDelay));
 
     // Toggle search bar visibility
     searchIcon.addEventListener('click', () => {
@@ -219,6 +527,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (event) => {
         if (!searchBar.contains(event.target)) {
             searchSuggestions.innerHTML = '';
+            advancedSearch.selectedIndex = -1;
+        }
+    });
+
+    // Search input focus events
+    searchInput.addEventListener('focus', () => {
+        if (searchInput.value.trim().length >= advancedSearch.minSearchLength) {
+            performSearch();
         }
     });
 
