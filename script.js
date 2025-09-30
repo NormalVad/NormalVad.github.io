@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchSuggestions.style.display = 'none';
     searchBar.appendChild(searchSuggestions);
 
-    // Simple search data
+    // Search data
     const searchData = [
         { title: 'Home', url: 'index.html', type: 'page', icon: 'fas fa-home' },
         { title: 'Experience', url: 'experience.html', type: 'page', icon: 'fas fa-briefcase' },
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: 'IIT Delhi', url: null, type: 'company', icon: 'fas fa-university' }
     ];
 
-    // Simple search function
+    // Search function
     function searchContent(query) {
         if (!query || query.length < 1) {
             searchSuggestions.style.display = 'none';
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displaySuggestions(results, query);
     }
 
-    // Display search suggestions
+    // Display suggestions
     function displaySuggestions(results, query) {
         searchSuggestions.innerHTML = '';
         
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchSuggestions.style.display = 'block';
     }
 
-    // Highlight matching text
+    // Highlight text
     function highlightText(text, query) {
         if (!query) return text;
         const regex = new RegExp(`(${query})`, 'gi');
@@ -199,4 +199,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         updateSidebar();
     }
+
+    // Debug: Test search functionality
+    console.log('Search system loaded');
+    console.log('Search input:', searchInput);
+    console.log('Search suggestions:', searchSuggestions);
+    
+    // Test function
+    window.testSearch = function(query = 'home') {
+        console.log('Testing search with:', query);
+        searchInput.value = query;
+        searchContent(query);
+    };
 });
