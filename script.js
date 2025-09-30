@@ -340,23 +340,63 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Advanced search functionality with autocomplete
+    // Simple fallback search function for testing
+    function simpleSearch(query) {
+        const simpleResults = [
+            { title: 'Home', url: 'index.html', type: 'page', icon: 'fas fa-home' },
+            { title: 'Experience', url: 'experience.html', type: 'page', icon: 'fas fa-briefcase' },
+            { title: 'Projects', url: 'projects.html', type: 'page', icon: 'fas fa-code' },
+            { title: 'Education', url: 'education.html', type: 'page', icon: 'fas fa-graduation-cap' },
+            { title: 'Natural Language Processing', url: null, type: 'skill', icon: 'fas fa-language' },
+            { title: 'Computer Vision', url: null, type: 'skill', icon: 'fas fa-eye' },
+            { title: 'Machine Learning', url: null, type: 'skill', icon: 'fas fa-brain' },
+            { title: 'Python', url: null, type: 'skill', icon: 'fab fa-python' },
+            { title: 'KAIST', url: null, type: 'company', icon: 'fas fa-university' },
+            { title: 'Adobe', url: null, type: 'company', icon: 'fab fa-adobe' },
+            { title: 'Goldman Sachs', url: null, type: 'company', icon: 'fas fa-building' },
+            { title: 'USC', url: null, type: 'company', icon: 'fas fa-university' }
+        ];
+
+        return simpleResults.filter(item => 
+            item.title.toLowerCase().includes(query.toLowerCase())
+        ).slice(0, 8);
+    }
+
+    // Enhanced search function with fallback
     function performSearch() {
         const query = searchInput.value.trim();
+        console.log('Search query:', query); // Debug log
         
-        if (query.length < advancedSearch.minSearchLength) {
+        if (query.length < 1) {
             searchSuggestions.innerHTML = '';
+            searchSuggestions.style.display = 'none';
             advancedSearch.searchResults = [];
             advancedSearch.selectedIndex = -1;
             return;
         }
 
-        const suggestions = advancedSearch.generateSuggestions(query);
+        let suggestions = [];
+        
+        // Try advanced search first
+        try {
+            suggestions = advancedSearch.generateSuggestions(query);
+            console.log('Advanced search results:', suggestions); // Debug log
+        } catch (error) {
+            console.error('Advanced search error:', error); // Debug log
+        }
+        
+        // Fallback to simple search if no results
+        if (suggestions.length === 0) {
+            suggestions = simpleSearch(query);
+            console.log('Simple search results:', suggestions); // Debug log
+        }
+        
         advancedSearch.searchResults = suggestions;
         displayAdvancedSuggestions(suggestions, query);
     }
 
     function displayAdvancedSuggestions(suggestions, query) {
+        console.log('Displaying suggestions:', suggestions); // Debug log
         searchSuggestions.innerHTML = '';
         
         if (suggestions.length === 0) {
@@ -366,6 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span>No results found for "${query}"</span>
                 </div>
             `;
+            searchSuggestions.style.display = 'block';
             return;
         }
 
@@ -373,6 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const suggestionItem = document.createElement('div');
             suggestionItem.className = 'search-suggestion';
             suggestionItem.setAttribute('data-index', index);
+            suggestionItem.setAttribute('data-type', suggestion.type);
             
             let content = '';
             if (suggestion.type === 'history') {
@@ -425,6 +467,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             searchSuggestions.appendChild(suggestionItem);
         });
+        
+        searchSuggestions.style.display = 'block';
+        console.log('Suggestions displayed, count:', suggestions.length); // Debug log
     }
 
     function highlightMatch(text, query) {
@@ -515,28 +560,55 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.addEventListener('click', toggleTheme);
 
     // Advanced search functionality
-    searchInput.addEventListener('input', debounce(performSearch, advancedSearch.debounceDelay));
+    searchInput.addEventListener('input', (e) => {
+        console.log('Input event triggered:', e.target.value); // Debug log
+        // Use setTimeout instead of debounce for immediate testing
+        setTimeout(() => {
+            performSearch();
+        }, 100);
+    });
 
     // Toggle search bar visibility
     searchIcon.addEventListener('click', () => {
         searchBar.classList.toggle('active');
         searchInput.focus();
+        console.log('Search icon clicked'); // Debug log
     });
 
     // Close search suggestions when clicking outside
     document.addEventListener('click', (event) => {
         if (!searchBar.contains(event.target)) {
             searchSuggestions.innerHTML = '';
+            searchSuggestions.style.display = 'none';
             advancedSearch.selectedIndex = -1;
         }
     });
 
     // Search input focus events
     searchInput.addEventListener('focus', () => {
+        console.log('Search input focused'); // Debug log
         if (searchInput.value.trim().length >= advancedSearch.minSearchLength) {
             performSearch();
         }
     });
+
+    // Test search functionality
+    console.log('Search system initialized'); // Debug log
+    console.log('Search input element:', searchInput); // Debug log
+    console.log('Search suggestions element:', searchSuggestions); // Debug log
+    
+    // Test function - can be called from browser console
+    window.testSearch = function(query = 'home') {
+        console.log('Testing search with query:', query);
+        searchInput.value = query;
+        performSearch();
+    };
+    
+    // Auto-test on page load
+    setTimeout(() => {
+        console.log('Auto-testing search...');
+        testSearch('home');
+    }, 1000);
 
     // Debounce function to limit how often a function is called
     function debounce(func, wait) {
