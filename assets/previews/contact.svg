@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Contact preview graphic">
+  <defs>
+    <linearGradient id="contact-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="contact-accent" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="28" fill="url(#contact-bg)"/>
+  <g fill="none" stroke="url(#contact-accent)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="60" y="60" width="200" height="120" rx="24"/>
+    <polyline points="60,80 160,140 260,80"/>
+  </g>
+  <g fill="#e0f2fe">
+    <circle cx="96" cy="90" r="8"/>
+    <circle cx="224" cy="90" r="8"/>
+  </g>
+</svg>

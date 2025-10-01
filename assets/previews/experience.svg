@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Experience preview graphic">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="28" fill="url(#bg)"/>
+  <g stroke="url(#accent)" stroke-width="6" stroke-linecap="round">
+    <line x1="64" y1="60" x2="256" y2="60" opacity="0.5"/>
+    <line x1="64" y1="100" x2="256" y2="100" opacity="0.75"/>
+    <line x1="64" y1="140" x2="256" y2="140" opacity="0.35"/>
+  </g>
+  <g fill="url(#accent)">
+    <circle cx="96" cy="60" r="10"/>
+    <circle cx="160" cy="100" r="10"/>
+    <circle cx="224" cy="140" r="10"/>
+  </g>
+  <g fill="#bae6fd">
+    <rect x="96" y="46" width="150" height="28" rx="8" opacity="0.2"/>
+    <rect x="110" y="86" width="130" height="28" rx="8" opacity="0.2"/>
+    <rect x="124" y="126" width="110" height="28" rx="8" opacity="0.2"/>
+  </g>
+</svg>
