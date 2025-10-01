@@ -260,5 +260,63 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSidebar();
     }
 
+    // ===== CONTACT FORM HANDLER =====
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        const statusEl = contactForm.querySelector('.form-status');
+
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const entries = Object.fromEntries(formData.entries());
+            formData.append('_subject', 'Portfolio contact form message');
+            formData.append('_captcha', 'false');
+
+            if (statusEl) {
+                statusEl.textContent = 'Sending your message…';
+                statusEl.classList.remove('success', 'error');
+            }
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/ayushgoyal5720@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json'
+                    },
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+
+                if (statusEl) {
+                    statusEl.textContent = 'Thanks for reaching out! I will get back to you shortly.';
+                    statusEl.classList.add('success');
+                }
+
+                contactForm.reset();
+            } catch (error) {
+                console.error('Unable to submit contact form', error);
+
+                if (statusEl) {
+                    statusEl.textContent = 'We could not reach the server. Opening your email client instead…';
+                    statusEl.classList.add('error');
+                }
+
+                const subject = 'Portfolio contact form message';
+                const bodyLines = [
+                    `Name: ${(entries.first_name || '').trim()} ${(entries.last_name || '').trim()}`.trim(),
+                    `Email: ${entries.email || ''}`,
+                    '',
+                    entries.message || ''
+                ];
+
+                window.location.href = `mailto:ayushgoyal5720@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+            }
+        });
+    }
+
     console.log('✅ All initialization complete');
 });

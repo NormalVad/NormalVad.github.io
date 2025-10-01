@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Education preview graphic">
+  <defs>
+    <linearGradient id="education-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+    <linearGradient id="education-accent" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0%" stop-color="#2dd4bf"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="28" fill="url(#education-bg)"/>
+  <g fill="url(#education-accent)">
+    <path d="M60 90 160 44l100 46-100 46z" opacity="0.9"/>
+    <path d="M110 102v38c16 10 84 10 100 0v-38l-50 24z" opacity="0.7"/>
+    <circle cx="250" cy="94" r="10"/>
+  </g>
+  <g stroke="#ccfbf1" stroke-width="6" stroke-linecap="round">
+    <line x1="160" y1="120" x2="160" y2="156" opacity="0.6"/>
+    <line x1="210" y1="140" x2="210" y2="170" opacity="0.4"/>
+  </g>
+</svg>
