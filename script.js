@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(overlay);
 
         const overlayText = overlay.querySelector('.overlay-text');
-        const words = text.split(/\s+/);
+        const characters = Array.from(text);
+        overlayText.textContent = '';
         let index = 0;
         let overlayHidden = false;
         let typingInterval = null;
@@ -86,16 +87,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const typingDelay = characters.length > 64 ? 48 : 60;
+
         typingInterval = window.setInterval(() => {
-            if (index >= words.length) {
+            if (index >= characters.length) {
                 finishTyping();
                 hideOverlay(900);
                 return;
             }
 
-            overlayText.textContent = words.slice(0, index + 1).join(' ');
+            overlayText.textContent = text.slice(0, index + 1);
             index += 1;
-        }, 160);
+        }, typingDelay);
     }
 
     class SearchController {
