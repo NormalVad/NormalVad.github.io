@@ -47,9 +47,7 @@ body {
 }
 
 body.home-page {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) var(--nav-width);
-    grid-template-rows: minmax(0, 1fr) auto;
+    display: block;
     min-height: 100vh;
 }
 
@@ -86,39 +84,38 @@ body.light-theme .site-header {
 }
 
 .home-page .site-header {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 50%;
+    right: clamp(2rem, 5vw, 4rem);
     left: auto;
-    bottom: 0;
-    right: 0;
-    height: 100vh;
+    bottom: auto;
+    transform: translateY(-50%);
     width: var(--nav-width);
+    height: auto;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 2rem;
+    align-items: stretch;
+    gap: 1.75rem;
     padding: clamp(2rem, 4vh, 3rem) 1.75rem;
     border-left: 1px solid var(--glass-border);
     border-right: none;
     border-bottom: none;
-    background: linear-gradient(200deg, rgba(6, 11, 25, 0.9), rgba(2, 132, 199, 0.15));
-    grid-column: 2;
-    grid-row: 1 / -1;
+    border-radius: 28px;
+    background: linear-gradient(200deg, rgba(6, 11, 25, 0.92), rgba(2, 132, 199, 0.22));
+    box-shadow: 0 30px 120px rgba(8, 47, 73, 0.35);
 }
 
 body.home-page .home-main {
-    grid-column: 1;
-    grid-row: 1;
     min-height: 100vh;
     padding: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 8vw, 8rem);
+    padding-right: calc(var(--nav-width) + clamp(3rem, 6vw, 6rem));
     display: grid;
     place-items: center;
     background: linear-gradient(135deg, rgba(8, 47, 73, 0.25), rgba(15, 23, 42, 0.9));
 }
 
 .home-page .site-footer {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    padding-right: calc(var(--nav-width) + clamp(3rem, 6vw, 6rem));
 }
 
 .primary-nav ul {
@@ -306,6 +303,10 @@ body.home-page .home-main {
     margin: 0;
     color: var(--muted-text);
     font-size: 1rem;
+}
+
+.identity-description + .identity-description {
+    margin-top: 0.75rem;
 }
 
 .identity-search {
@@ -1138,11 +1139,16 @@ body.home-page .home-main {
         padding: 1rem clamp(1rem, 4vw, 2rem);
         left: 0;
         right: 0;
+        top: 0;
+        bottom: auto;
+        transform: none;
         justify-content: space-between;
         align-items: center;
         gap: 1.5rem;
         border-left: none;
         border-bottom: 1px solid var(--glass-border);
+        border-radius: 0;
+        box-shadow: none;
     }
 
     .home-page .primary-nav ul {
@@ -1159,6 +1165,7 @@ body.home-page .home-main {
         margin-top: 96px;
         padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 6vw, 4rem);
         display: block;
+        padding-right: clamp(1.5rem, 6vw, 4rem);
     }
 
     .page-content {
@@ -1171,6 +1178,10 @@ body.home-page .home-main {
 
     .contact-card {
         grid-template-columns: 1fr;
+    }
+
+    .home-page .site-footer {
+        padding-right: clamp(1.5rem, 6vw, 4rem);
     }
 
     .nav-preview {
