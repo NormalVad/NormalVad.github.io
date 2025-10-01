@@ -401,22 +401,38 @@ body.home-page .home-main {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: rgba(15, 23, 42, 0.9);
-    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.35);
     display: grid;
     place-items: center;
-    transition: transform var(--transition-fast), background var(--transition-fast);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.25);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
 .social-link:hover,
 .social-link:focus-visible {
-    background: rgba(56, 189, 248, 0.18);
     transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.35);
+    border-color: rgba(59, 130, 246, 0.45);
+    outline: none;
 }
 
 .social-link img {
     width: 18px;
     height: 18px;
+    object-fit: contain;
+}
+
+body.light-theme .social-link {
+    background: rgba(15, 23, 42, 0.08);
+    border-color: rgba(148, 163, 184, 0.35);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+body.light-theme .social-link:hover,
+body.light-theme .social-link:focus-visible {
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.24);
+    border-color: rgba(59, 130, 246, 0.45);
 }
 
 .site-footer {
@@ -456,24 +472,51 @@ body.home-page .home-main {
 }
 
 .logo-link {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid var(--glass-border);
-    background: rgba(15, 23, 42, 0.85);
+    width: 48px;
+    height: 48px;
+    border-radius: 1.25rem;
+    padding: 0.35rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: rgba(255, 255, 255, 0.92);
     display: grid;
     place-items: center;
-    transition: transform var(--transition-fast), background var(--transition-fast);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.22);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
-.logo-link:hover {
-    transform: translateY(-2px);
-    background: rgba(56, 189, 248, 0.2);
+.logo-link:hover,
+.logo-link:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.3);
+    border-color: rgba(59, 130, 246, 0.45);
+    outline: none;
 }
 
 .logo-link img {
-    width: 20px;
-    height: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.resume-logo {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(124, 58, 237, 0.95));
+    border-color: rgba(59, 130, 246, 0.45);
+    box-shadow: 0 18px 46px rgba(79, 70, 229, 0.35);
+}
+
+body.light-theme .logo-link {
+    background: rgba(15, 23, 42, 0.08);
+    border-color: rgba(148, 163, 184, 0.35);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18);
+}
+
+body.light-theme .logo-link:hover,
+body.light-theme .logo-link:focus-visible {
+    box-shadow: 0 16px 38px rgba(15, 23, 42, 0.24);
+}
+
+body.light-theme .resume-logo {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.9));
 }
 
 .page-content {

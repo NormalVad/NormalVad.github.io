@@ -417,4 +417,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    console.log('✅ All initialization complete');
 });
