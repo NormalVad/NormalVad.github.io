@@ -1,8 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Gmail">
   <title>Gmail icon</title>
-  <path fill="#EA4335" d="M6 39V9l18 14.25L42 9v30z"/>
-  <path fill="#34A853" d="M6 39l12-9-12-9z"/>
-  <path fill="#FBBC04" d="M42 39l-12-9 12-9z"/>
-  <path fill="#C5221F" d="M6 9l12 9 6-4.5L30 18l12-9z"/>
-  <path fill="#F5F5F5" d="M18 30l6-4.5 6 4.5V18l-6-4.5L18 18z"/>
+  <path d="M0 0h512v512H0" fill="#fff"/>
+  <path d="M76 190v171q0 30 30 30h52V190" fill="#4285f4"/>
+  <path d="M354 190v201h52q30 0 30-30V190" fill="#34a853"/>
+  <path d="M350 255V149l28-21c24-18 58 2 58 30v32" fill="#fbbc04"/>
+  <path d="M154 249V143l102 77 98-74v106l-98 74" fill="#ea4335"/>
+  <path d="M76 190v-32c0-29 34-48 58-30l24 18v106" fill="#c5221f"/>
 </svg>
