@@ -4,7 +4,100 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const navPreview = document.querySelector('.nav-preview');
     const navLinks = document.querySelectorAll('.primary-nav a[data-preview]');
-    
+
+    initializePageIntro();
+
+    function initializePageIntro() {
+        const introText = document.body.dataset.introText;
+        if (!introText) {
+            return;
+        }
+        createPageIntro(introText.trim());
+    }
+
+    function createPageIntro(text) {
+        const overlay = document.createElement('div');
+        overlay.className = 'page-intro-overlay';
+        overlay.innerHTML = `
+            <div class="overlay-background" aria-hidden="true"></div>
+            <div class="overlay-content">
+                <p class="overlay-text" aria-live="polite"></p>
+                <span class="overlay-hint">Tap or press Esc/Enter to continue</span>
+            </div>
+        `;
+
+        document.body.classList.add('intro-active');
+        document.body.appendChild(overlay);
+
+        const overlayText = overlay.querySelector('.overlay-text');
+        const words = text.split(/\s+/);
+        let index = 0;
+        let overlayHidden = false;
+        let typingInterval = null;
+
+        const finishTyping = () => {
+            if (typingInterval) {
+                window.clearInterval(typingInterval);
+                typingInterval = null;
+            }
+        };
+
+        const cleanup = () => {
+            document.removeEventListener('keydown', keyHandler);
+            overlay.removeEventListener('click', skipHandler);
+        };
+
+        const hideOverlay = (delay = 0) => {
+            if (overlayHidden) return;
+            overlayHidden = true;
+            cleanup();
+            window.setTimeout(() => {
+                overlay.classList.add('is-hidden');
+                document.body.classList.remove('intro-active');
+                window.setTimeout(() => overlay.remove(), 600);
+            }, delay);
+        };
+
+        const revealAndHide = () => {
+            finishTyping();
+            overlayText.textContent = text;
+            hideOverlay(200);
+        };
+
+        const keyHandler = (event) => {
+            if (event.key === 'Escape' || event.key === 'Esc' || event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                revealAndHide();
+            }
+        };
+
+        const skipHandler = () => {
+            revealAndHide();
+        };
+
+        document.addEventListener('keydown', keyHandler);
+        overlay.addEventListener('click', skipHandler);
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (prefersReducedMotion) {
+            overlayText.textContent = text;
+            hideOverlay(400);
+            return;
+        }
+
+        typingInterval = window.setInterval(() => {
+            if (index >= words.length) {
+                finishTyping();
+                hideOverlay(900);
+                return;
+            }
+
+            overlayText.textContent = words.slice(0, index + 1).join(' ');
+            index += 1;
+        }, 160);
+    }
+
     class SearchController {
         constructor(component) {
             this.component = component;
@@ -184,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function initializeSearch() {
         const components = document.querySelectorAll('[data-search-component]');
         if (!components.length) {
-            console.warn('No search components found');
             return;
         }
 

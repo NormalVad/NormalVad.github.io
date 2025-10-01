@@ -1,22 +1,22 @@
 [
-    {
-      "title": "Home",
-      "url": "/index.html",
-      "content": "Ayush Goyal Graduate Research Assistant University of Southern California. I am actively seeking Summer Internship opportunities."
-    },
-    {
-      "title": "Experience",
-      "url": "/experience.html",
-      "content": "Goldman Sachs Quant Strategist Intern Summer Analyst Jun 2025 - Aug 2025 · New York, New York, United States. Mortgage Strats team engineered features and trained Random Forest scikit-learn model to predict Commercial Mortgage Backed Securities CMBS building valuations. IRP SMM Strats team extended Spreader algorithm in Java to improve performance under aggressive market conditions and investigated execution slippage against arrival market prices identifying opportunities worth approximately +$137K per $1mm duration traded. Machine Learning Quantitative Analysis Finance Java Python. SAIL, KAIST Research Assistant Aug 2023 - Jun 2024 · Daejeon, South Korea (Remote). Enhanced efficacy by leveraging dependency parser-based syntactic units, resulting in 7% increase in metric scores. Evaluated LIME, SHAP, IG, LRP and Attention on text classification models for Plug and Play XAI project. Developed a pipeline to provide the best explainer algorithm for particular text-based models to build trustworthiness. Adobe Research Intern Jun 2022 - Aug 2022 · Bengaluru, India (Remote). Implemented Quantization-Aware Training algorithm for GANs to optimize model size and performance in PyTorch. Analyzed layer-wise sensitivity of StyleGAN2 by estimating average Hessian matrix trace via Hutchinson algorithm. Achieved a high compression ratio of 6.5 times with negligible degradation in FID score compared to original model."
-    },
-    {
-      "title": "Projects",
-      "url": "/projects.html",
-      "content": "PETRv2 Multi-Frame Adaptive Extensions Enhanced PETRv2 model with adaptive multi-frame temporal fusion mechanisms for improved 3D object detection in autonomous driving scenarios. Computer Vision 3D Object Detection Autonomous Driving. Intent based CounterSpeech A system that generates counter-speech responses to combat online hate speech, considering the intent behind the hateful content. NLP AI Ethics. Claim Span Identification (CSI) An AI-powered tool that identifies and extracts claim spans from text, useful for fact-checking and argument analysis. NLP Fact-Checking."
-    },
-    {
-      "title": "Education",
-      "url": "/education.html",
-      "content": "University of Southern California (USC) MS in Computer Science | Jun 2024 - Dec 2025. GPA: 4.0/4.0. Relevant Coursework: CSCI 570 - Analysis and Design of Algorithms, CSCI 662 - Advanced Natural Language Processing (Ongoing), CSCI 545 - Introduction to Robotics (Ongoing). Indian Institute of Technology Delhi (IITD) BTech in Mathematics and Computing | Jul 2019 - Aug 2023. GPA: 9.078/10.0. Relevant Coursework: Algorithms, Data Structures, Machine Learning."
-    }
-  ]
+  {
+    "title": "Home",
+    "url": "/index.html",
+    "content": "Ayush Goyal CS graduate student at USC and IIT Delhi alumnus. Focused on NLP, computer vision, explainable AI, and multimodal systems while seeking 2026 new grad roles."
+  },
+  {
+    "title": "Experience",
+    "url": "/experience.html",
+    "content": "Goldman Sachs Quant Strategist Intern Summer Analyst Jun 2025 - Aug 2025 \u00b7 New York, New York, United States. Mortgage Strats team engineered features and trained Random Forest scikit-learn model to predict Commercial Mortgage Backed Securities CMBS building valuations. IRP SMM Strats team extended Spreader algorithm in Java to improve performance under aggressive market conditions and investigated execution slippage against arrival market prices identifying opportunities worth approximately +$137K per $1mm duration traded. Machine Learning Quantitative Analysis Finance Java Python. SAIL, KAIST Research Assistant Aug 2023 - Jun 2024 \u00b7 Daejeon, South Korea (Remote). Enhanced efficacy by leveraging dependency parser-based syntactic units, resulting in 7% increase in metric scores. Evaluated LIME, SHAP, IG, LRP and Attention on text classification models for Plug and Play XAI project. Developed a pipeline to provide the best explainer algorithm for particular text-based models to build trustworthiness. Adobe Research Intern Jun 2022 - Aug 2022 \u00b7 Bengaluru, India (Remote). Implemented Quantization-Aware Training algorithm for GANs to optimize model size and performance in PyTorch. Analyzed layer-wise sensitivity of StyleGAN2 by estimating average Hessian matrix trace via Hutchinson algorithm. Achieved a high compression ratio of 6.5 times with negligible degradation in FID score compared to original model."
+  },
+  {
+    "title": "Projects",
+    "url": "/projects.html",
+    "content": "PETRv2 Multi-Frame Adaptive Extensions Enhanced PETRv2 model with adaptive multi-frame temporal fusion for improved 3D object detection in autonomous driving scenarios. Intent based CounterSpeech Generates counter speech responses using intent-aware NLP pipelines. Claim Span Identification (CSI) Extracts claim spans from text to support fact-checking and argument analysis."
+  },
+  {
+    "title": "Education",
+    "url": "/education.html",
+    "content": "University of Southern California (USC) MS in Computer Science | Jun 2024 - Dec 2025. GPA: 3.9/4.0. Coursework includes Algorithms, Advanced Natural Language Processing, Robotics, Deep Learning, Advanced Computer Vision, and Digital Image Processing. Indian Institute of Technology Delhi (IITD) BTech in Mathematics and Computing | Jul 2019 - Aug 2023. CGPA: 9.078/10.0. Coursework spans Data Structures, Algorithms, NLP, Machine Learning, and Probability."
+  }
+]
