@@ -48,8 +48,8 @@ body {
 
 body.home-page {
     display: grid;
-    grid-template-columns: 1fr var(--nav-width);
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr) var(--nav-width);
+    grid-template-rows: minmax(0, 1fr) auto;
     min-height: 100vh;
 }
 
@@ -103,23 +103,22 @@ body.light-theme .site-header {
     border-bottom: none;
     background: linear-gradient(200deg, rgba(6, 11, 25, 0.9), rgba(2, 132, 199, 0.15));
     grid-column: 2;
-    grid-row: 1 / span 3;
+    grid-row: 1 / -1;
 }
 
 body.home-page .home-main {
     grid-column: 1;
-    grid-row: 1 / span 2;
+    grid-row: 1;
     min-height: 100vh;
-    padding: clamp(3rem, 6vw, 6rem) clamp(3rem, 8vw, 8rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 8vw, 8rem);
+    display: grid;
+    place-items: center;
     background: linear-gradient(135deg, rgba(8, 47, 73, 0.25), rgba(15, 23, 42, 0.9));
 }
 
 .home-page .site-footer {
     grid-column: 1 / -1;
-    grid-row: 3;
+    grid-row: 2;
 }
 
 .primary-nav ul {
@@ -226,6 +225,7 @@ body.home-page .home-main {
 
 .identity-card {
     width: min(720px, 100%);
+    margin-inline: auto;
     background: linear-gradient(155deg, rgba(15, 23, 42, 0.92), rgba(8, 47, 73, 0.85));
     border-radius: 28px;
     padding: clamp(2.75rem, 5vw, 3.5rem);
@@ -1155,9 +1155,10 @@ body.home-page .home-main {
         margin-top: 0;
     }
 
-    .home-main {
+    .home-page .home-main {
         margin-top: 96px;
         padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 6vw, 4rem);
+        display: block;
     }
 
     .page-content {
