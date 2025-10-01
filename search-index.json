@@ -12,7 +12,7 @@
     {
       "title": "Projects",
       "url": "/projects.html",
-      "content": "Intent based CounterSpeech A brief description of Project 1. Claim Span Identification (CSI) A brief description of Project 2."
+      "content": "PETRv2 Multi-Frame Adaptive Extensions Enhanced PETRv2 model with adaptive multi-frame temporal fusion mechanisms for improved 3D object detection in autonomous driving scenarios. Computer Vision 3D Object Detection Autonomous Driving. Intent based CounterSpeech A system that generates counter-speech responses to combat online hate speech, considering the intent behind the hateful content. NLP AI Ethics. Claim Span Identification (CSI) An AI-powered tool that identifies and extracts claim spans from text, useful for fact-checking and argument analysis. NLP Fact-Checking."
     },
     {
       "title": "Education",
