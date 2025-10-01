@@ -20,10 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.className = 'page-intro-overlay';
         overlay.innerHTML = `
             <div class="overlay-background" aria-hidden="true"></div>
-            <div class="overlay-content">
-                <p class="overlay-text" aria-live="polite"></p>
-                <span class="overlay-hint">Tap or press Esc/Enter to continue</span>
-            </div>
+            <p class="overlay-text" aria-live="polite"></p>
+            <span class="overlay-hint">Tap or press Esc/Enter to continue</span>
         `;
 
         document.body.classList.add('intro-active');
