@@ -8,6 +8,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchIcon = document.getElementById('search-icon');
     const searchBar = document.getElementById('search-bar');
     
+    // ===== ACTIVE PAGE HIGHLIGHTING =====
+    function highlightActivePage() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('nav a');
+        
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href');
+            if (linkPage === currentPage || 
+                (currentPage === '' && linkPage === 'index.html')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+    
+    highlightActivePage();
+    
     // ===== SEARCH FUNCTIONALITY =====
     if (searchInput && searchBar) {
         console.log('✓ Search elements found');
