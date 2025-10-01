@@ -21,9 +21,9 @@
             </ul>
         </nav>
         <div class="header-icons">
-            <div class="search-bar" id="search-bar">
-                <input type="text" id="search-input" placeholder="Search...">
-                <button id="search-icon" aria-label="Search"><i class="fas fa-search"></i></button>
+            <div class="search-bar" data-search-component>
+                <input type="text" placeholder="Search..." aria-label="Search" data-search-input>
+                <button type="button" aria-label="Search" data-search-button><i class="fas fa-search"></i></button>
             </div>
             <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
         </div>
@@ -157,6 +157,6 @@
         <p>&copy; 2024 Ayush Goyal. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
