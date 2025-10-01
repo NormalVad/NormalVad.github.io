@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Ayush Goyal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="interior-page contact-page">
+    <header class="site-header">
+        <nav class="primary-nav" aria-label="Primary">
+            <ul>
+                <li><a href="index.html" data-preview="assets/previews/home.svg" data-preview-alt="Preview of the home hub" data-preview-text="Return to the hero hub">Home</a></li>
+                <li><a href="experience.html" data-preview="assets/previews/experience.svg" data-preview-alt="Preview of experience timeline" data-preview-text="Quant research, AI, and product work">Experience</a></li>
+                <li><a href="projects.html" data-preview="assets/previews/projects.svg" data-preview-alt="Preview of highlighted projects" data-preview-text="NLP, CV, and multimodal builds">Projects</a></li>
+                <li><a href="education.html" data-preview="assets/previews/education.svg" data-preview-alt="Preview of academic journey" data-preview-text="IIT Delhi to USC Computer Science">Education</a></li>
+                <li><a href="contact.html" data-preview="assets/previews/contact.svg" data-preview-alt="Preview of contact card" data-preview-text="Reach out to collaborate">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon" aria-hidden="true"></i></button>
+        </div>
+    </header>
+
+    <main id="content" class="page-content contact-content">
+        <section class="page-hero">
+            <div class="page-hero-inner">
+                <p class="page-kicker">Contact</p>
+                <h1 data-animate-words>Let's design the next wave of intelligent products</h1>
+                <p class="page-summary">Share your vision and I'll respond within two business days. I'm excited to collaborate on research, product, or venture ideas.</p>
+            </div>
+        </section>
+
+        <section class="contact-hero" aria-labelledby="contact-heading">
+            <div class="contact-card">
+                <div class="contact-info">
+                    <h2 id="contact-heading">Contact Information</h2>
+                    <p>Reach out directly via email or LinkedIn, or drop a message in the form. I'm currently looking for 2026 new grad roles and collaborative research opportunities.</p>
+                    <ul class="contact-list">
+                        <li>
+                            <img src="assets/icons/email.svg" alt="" aria-hidden="true">
+                            <a href="mailto:ayushgoyal5720@gmail.com">ayushgoyal5720@gmail.com</a>
+                        </li>
+                        <li>
+                            <img src="assets/icons/linkedin.svg" alt="" aria-hidden="true">
+                            <a href="https://www.linkedin.com/in/ayushgoyal0507/" target="_blank" rel="noopener">linkedin.com/in/ayushgoyal0507</a>
+                        </li>
+                        <li>
+                            <img src="assets/icons/github.svg" alt="" aria-hidden="true">
+                            <a href="https://github.com/NormalVad" target="_blank" rel="noopener">github.com/NormalVad</a>
+                        </li>
+                    </ul>
+                </div>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="first-name">First name</label>
+                            <input type="text" id="first-name" name="first_name" autocomplete="given-name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="last-name">Last name</label>
+                            <input type="text" id="last-name" name="last_name" autocomplete="family-name" required>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="send-button">Send Message</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-nav">
+            <a href="education.html">&larr; Education</a>
+            <a href="index.html">Home &rarr;</a>
+        </div>
+        <div class="social-logos">
+            <a href="https://www.instagram.com/goyalidis/" target="_blank" rel="noopener" title="Instagram" class="logo-link">
+                <img src="assets/icons/instagram.svg" alt="Instagram">
+            </a>
+            <a href="mailto:ayushgoyal5720@gmail.com" title="Email" class="logo-link">
+                <img src="assets/icons/email.svg" alt="Email">
+            </a>
+            <a href="https://www.linkedin.com/in/ayushgoyal0507/" target="_blank" rel="noopener" title="LinkedIn" class="logo-link">
+                <img src="assets/icons/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/NormalVad" target="_blank" rel="noopener" title="GitHub" class="logo-link">
+                <img src="assets/icons/github.svg" alt="GitHub">
+            </a>
+            <a href="Ayush_Goyal_resume.pdf" target="_blank" rel="noopener" title="Resume" class="logo-link resume-logo">
+                <img src="assets/icons/resume.svg" alt="Resume">
+            </a>
+        </div>
+        <p>&copy; 2024 Ayush Goyal. All rights reserved.</p>
+    </footer>
+
+    <div class="nav-preview" aria-hidden="true">
+        <img src="" alt="">
+        <p></p>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

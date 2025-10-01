@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Script loaded');
-    
     const content = document.getElementById('content');
     const sidebar = document.getElementById('sidebar');
     const themeToggle = document.getElementById('theme-toggle');
+    const navPreview = document.querySelector('.nav-preview');
+    const navLinks = document.querySelectorAll('.primary-nav a[data-preview]');
     
     class SearchController {
         constructor(component) {
@@ -196,6 +196,102 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initializeSearch();
+
+    // ===== NAV PREVIEW =====
+    function setupNavPreview() {
+        if (!navPreview || !navLinks.length) return;
+        const allowPreview = window.matchMedia('(pointer: fine)').matches;
+        if (!allowPreview) {
+            navPreview.remove();
+            return;
+        }
+
+        let hideTimeout;
+
+        const showPreview = (link) => {
+            const previewImg = navPreview.querySelector('img');
+            const previewText = navPreview.querySelector('p');
+            if (previewImg) {
+                previewImg.src = link.dataset.preview;
+                previewImg.alt = link.dataset.previewAlt || '';
+            }
+            if (previewText) {
+                previewText.textContent = link.dataset.previewText || link.textContent.trim();
+            }
+
+            navPreview.style.display = 'flex';
+
+            window.requestAnimationFrame(() => {
+                const rect = link.getBoundingClientRect();
+                const previewRect = navPreview.getBoundingClientRect();
+                const viewportTop = window.scrollY + 16;
+                const viewportBottom = window.scrollY + window.innerHeight - previewRect.height - 16;
+                let top = window.scrollY + rect.top + rect.height / 2 - previewRect.height / 2;
+                top = Math.max(viewportTop, Math.min(top, viewportBottom));
+
+                const viewportLeft = window.scrollX + 16;
+                const viewportRight = window.scrollX + window.innerWidth - previewRect.width - 16;
+                let left = window.scrollX + rect.right + 20;
+
+                if (left > viewportRight) {
+                    left = window.scrollX + rect.left - previewRect.width - 20;
+                }
+
+                left = Math.max(viewportLeft, Math.min(left, viewportRight));
+
+                navPreview.style.top = `${top}px`;
+                navPreview.style.left = `${left}px`;
+            });
+        };
+
+        const scheduleHide = () => {
+            hideTimeout = window.setTimeout(() => {
+                navPreview.style.display = 'none';
+            }, 120);
+        };
+
+        const cancelHide = () => {
+            if (hideTimeout) {
+                window.clearTimeout(hideTimeout);
+                hideTimeout = undefined;
+            }
+        };
+
+        navLinks.forEach((link) => {
+            link.addEventListener('mouseenter', () => {
+                cancelHide();
+                showPreview(link);
+            });
+            link.addEventListener('mouseleave', scheduleHide);
+            link.addEventListener('focus', () => {
+                cancelHide();
+                showPreview(link);
+            });
+            link.addEventListener('blur', scheduleHide);
+        });
+
+        navPreview.addEventListener('mouseenter', cancelHide);
+        navPreview.addEventListener('mouseleave', scheduleHide);
+    }
+
+    setupNavPreview();
+
+    // ===== WORD REVEAL =====
+    function animateWords() {
+        const headings = document.querySelectorAll('[data-animate-words]');
+        headings.forEach((heading) => {
+            if (heading.dataset.processed === 'true') return;
+            const text = heading.textContent.trim();
+            if (!text) return;
+            const words = text.split(/\s+/);
+            heading.innerHTML = words
+                .map((word, index) => `<span style="--word-index:${index}">${word}</span>`)
+                .join(' ');
+            heading.dataset.processed = 'true';
+        });
+    }
+
+    animateWords();
     
     // ===== ACTIVE PAGE HIGHLIGHTING =====
     function highlightActivePage() {
@@ -245,6 +341,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== SIDEBAR =====
     if (sidebar && content) {
         function updateSidebar() {
+            if (sidebar.children.length > 0) {
+                return;
+            }
             const headings = content.querySelectorAll('h2');
             if (headings.length > 0) {
             let sidebarContent = '<h3>On this page</h3><ul>';

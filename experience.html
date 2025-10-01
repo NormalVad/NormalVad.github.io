@@ -10,51 +10,32 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="has-fixed-header">
-    <header>
-        <nav>
+<body class="interior-page experience-page">
+    <header class="site-header">
+        <nav class="primary-nav" aria-label="Primary">
             <ul>
-                <li><a href="index.html" class="nav-link home-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    </svg>
-                    <span>Home</span>
-                </a></li>
-                <li><a href="experience.html" class="nav-link experience-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 6h-2l-2-2H8L6 6H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h2l2 2h8l2-2h2v10z"/>
-                    </svg>
-                    <span>Experience</span>
-                </a></li>
-                <li><a href="projects.html" class="nav-link projects-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-                    </svg>
-                    <span>Projects</span>
-                </a></li>
-                <li><a href="education.html" class="nav-link education-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                    </svg>
-                    <span>Education</span>
-                </a></li>
+                <li><a href="index.html" data-preview="assets/previews/home.svg" data-preview-alt="Preview of the home hub" data-preview-text="Return to the hero hub">Home</a></li>
+                <li><a href="experience.html" data-preview="assets/previews/experience.svg" data-preview-alt="Preview of experience timeline" data-preview-text="Quant research, AI, and product work">Experience</a></li>
+                <li><a href="projects.html" data-preview="assets/previews/projects.svg" data-preview-alt="Preview of highlighted projects" data-preview-text="NLP, CV, and multimodal builds">Projects</a></li>
+                <li><a href="education.html" data-preview="assets/previews/education.svg" data-preview-alt="Preview of academic journey" data-preview-text="IIT Delhi to USC Computer Science">Education</a></li>
+                <li><a href="contact.html" data-preview="assets/previews/contact.svg" data-preview-alt="Preview of contact card" data-preview-text="Reach out to collaborate">Contact</a></li>
             </ul>
         </nav>
-        <div class="header-icons">
-            <div class="search-bar" data-search-component>
-                <input type="text" placeholder="Search..." aria-label="Search" data-search-input>
-                <button type="button" aria-label="Search" data-search-button><i class="fas fa-search"></i></button>
-            </div>
-            <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        <div class="header-actions">
+            <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon" aria-hidden="true"></i></button>
         </div>
     </header>
 
-    <main id="content" class="left-content">
-        <div class="content-wrapper">
-            <div class="page-intro">
-                <p>My journey in academia and the tech industry, building innovative solutions and advancing AI research.</p>
+    <main id="content" class="page-content">
+        <section class="page-hero">
+            <div class="page-hero-inner">
+                <p class="page-kicker">Experience</p>
+                <h1 data-animate-words>Mapping the professional constellations I've engineered</h1>
+                <p class="page-summary">From quant finance to explainable AI, I build systems that scale responsibly and feel futuristic from day one.</p>
             </div>
-            
+        </section>
+
+        <div class="content-wrapper">
             <div class="timeline">
                 <div class="experience-item" id="goldman-sachs">
                     <div class="experience-header">
@@ -137,40 +118,45 @@
             </div>
         </div>
         
-        <aside id="sidebar">
-            <h3>On this page</h3>
+        <aside id="sidebar" class="page-sidebar">
+            <h3>Highlights</h3>
             <ul>
-                <li><a href="#goldman-sachs">Goldman Sachs</a></li>
-                <li><a href="#kaist">SAIL, KAIST</a></li>
-                <li><a href="#adobe">Adobe</a></li>
+                <li><a href="#goldman-sachs">Goldman Sachs · Mortgage &amp; IRP SMM Strats</a></li>
+                <li><a href="#kaist">SAIL, KAIST · Plug &amp; Play XAI</a></li>
+                <li><a href="#adobe">Adobe · Generative Compression</a></li>
             </ul>
         </aside>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-nav">
             <a href="education.html">&larr; Education</a>
             <a href="projects.html">Projects &rarr;</a>
         </div>
         <div class="social-logos">
-            <a href="https://www.instagram.com/goyalidis/" target="_blank" title="Instagram" class="logo-link">
+            <a href="https://www.instagram.com/goyalidis/" target="_blank" rel="noopener" title="Instagram" class="logo-link">
                 <img src="assets/icons/instagram.svg" alt="Instagram">
             </a>
             <a href="mailto:ayushgoyal5720@gmail.com" title="Email" class="logo-link">
                 <img src="assets/icons/email.svg" alt="Email">
             </a>
-            <a href="https://www.linkedin.com/in/ayushgoyal0507/" target="_blank" title="LinkedIn" class="logo-link">
+            <a href="https://www.linkedin.com/in/ayushgoyal0507/" target="_blank" rel="noopener" title="LinkedIn" class="logo-link">
                 <img src="assets/icons/linkedin.svg" alt="LinkedIn">
             </a>
-            <a href="https://github.com/NormalVad" target="_blank" title="GitHub" class="logo-link">
+            <a href="https://github.com/NormalVad" target="_blank" rel="noopener" title="GitHub" class="logo-link">
                 <img src="assets/icons/github.svg" alt="GitHub">
             </a>
-            <a href="Ayush_Goyal_resume.pdf" target="_blank" title="Resume" class="logo-link resume-logo">
+            <a href="Ayush_Goyal_resume.pdf" target="_blank" rel="noopener" title="Resume" class="logo-link resume-logo">
                 <img src="assets/icons/resume.svg" alt="Resume">
             </a>
         </div>
         <p>&copy; 2024 Ayush Goyal. All rights reserved.</p>
     </footer>
+
+    <div class="nav-preview" aria-hidden="true">
+        <img src="" alt="">
+        <p></p>
+    </div>
 
     <script src="script.js" defer></script>
 </body>
