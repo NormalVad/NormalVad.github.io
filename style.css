@@ -1589,3 +1589,65 @@ body.light-theme .suggestion-icon-wrapper {
         scroll-behavior: auto !important;
     }
 }
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #02040f;
+    font-size: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity var(--transition-normal), visibility var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-fast);
+    z-index: 900;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    box-shadow: 0 12px 32px rgba(255, 232, 31, 0.4);
+    transform: translateY(-3px);
+}
+
+.scroll-to-top:active {
+    transform: translateY(0);
+}
+
+body.light-theme .scroll-to-top {
+    box-shadow: 0 8px 24px rgba(148, 114, 32, 0.3);
+}
+
+body.light-theme .scroll-to-top:hover {
+    box-shadow: 0 12px 32px rgba(217, 119, 6, 0.4);
+}
+
+@media (max-width: 720px) {
+    .scroll-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+}
